@@ -4,10 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -46,6 +43,25 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun CustomText(){
+    Column(
+        modifier = Modifier.fillMaxSize()){
+        Text(
+            text = stringResource(id = R.string.app_name),
+            modifier = Modifier
+                .background(MaterialTheme.colors.primary) //if i put this background after padding that will not paint the padding
+                .padding(16.dp)
+                .width(200.dp),
+            color = Color.White,
+            fontSize = MaterialTheme.typography.h6.fontSize,
+            fontStyle = FontStyle.Italic,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.End
+        )
+    }
+}
+
+@Composable
 fun CustomText2(){
     Text(
         buildAnnotatedString {
@@ -63,7 +79,7 @@ fun CustomText2(){
             append("D")
             }
         }, modifier = Modifier
-            .width(200.dp)
+            .fillMaxWidth()
             .background(Color.Yellow)
     )
 }
@@ -81,27 +97,16 @@ fun CustomText3(){
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-       Column(
-           modifier = Modifier.fillMaxSize()){
-               Text(
-                   text = stringResource(id = R.string.app_name),
-                   modifier = Modifier
-                       .background(MaterialTheme.colors.primary) //if i put this background after padding that will not paint the padding
-                       .padding(16.dp)
-                       .width(200.dp),
-                   color = Color.White,
-                   fontSize = MaterialTheme.typography.h6.fontSize,
-                   fontStyle = FontStyle.Italic,
-                   fontWeight = FontWeight.Bold,
-                   textAlign = TextAlign.End
-               )
-           }
+        Column(
+            modifier = Modifier.fillMaxSize()){
+            CustomText()
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreviewTest() {
+fun DefaultPreview2() {
     MyApplicationTheme {
         Column(
             modifier = Modifier.fillMaxSize()){
@@ -112,7 +117,7 @@ fun DefaultPreviewTest() {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreviewTestRepeat() {
+fun DefaultPreview3() {
     MyApplicationTheme {
         Column(
             modifier = Modifier.fillMaxSize()){
