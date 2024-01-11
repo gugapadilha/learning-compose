@@ -7,14 +7,25 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.ParagraphStyle
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -34,6 +45,38 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Composable
+fun CustomText2(){
+    Text(
+        buildAnnotatedString {
+            withStyle(style = ParagraphStyle(
+                textAlign = TextAlign.Center
+            )){
+            withStyle(style = SpanStyle(
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold
+            )){
+                append("A")
+            }
+            append("B")
+            append("C")
+            append("D")
+            }
+        }, modifier = Modifier
+            .width(200.dp)
+            .background(Color.Yellow)
+    )
+}
+
+@Composable
+fun CustomText3(){
+    Text(
+        text = "Hello World!".repeat(20),
+        maxLines = 2,
+        overflow = TextOverflow.Ellipsis
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -45,7 +88,35 @@ fun DefaultPreview() {
                    modifier = Modifier
                        .background(MaterialTheme.colors.primary) //if i put this background after padding that will not paint the padding
                        .padding(16.dp)
+                       .width(200.dp),
+                   color = Color.White,
+                   fontSize = MaterialTheme.typography.h6.fontSize,
+                   fontStyle = FontStyle.Italic,
+                   fontWeight = FontWeight.Bold,
+                   textAlign = TextAlign.End
                )
            }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreviewTest() {
+    MyApplicationTheme {
+        Column(
+            modifier = Modifier.fillMaxSize()){
+            CustomText2()
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreviewTestRepeat() {
+    MyApplicationTheme {
+        Column(
+            modifier = Modifier.fillMaxSize()){
+            CustomText3()
+        }
     }
 }
