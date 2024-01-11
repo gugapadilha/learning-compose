@@ -13,6 +13,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -84,6 +85,36 @@ fun GreetingTest2() {
 
 }
 
+@Composable
+fun GreetingTest3() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.TopCenter
+
+    ){
+        Box(
+            modifier = Modifier
+                .background(Color.Black),
+            contentAlignment = Alignment.TopEnd
+        ){
+            Box(modifier = Modifier
+                .height(400.dp)
+                .width(400.dp)
+                .background(Color.Green),
+            )
+            Text(
+                text = "I'm Guga Padilha",
+                fontSize = 100.sp,
+                color = Color.White,
+                modifier = Modifier.padding(15.dp)
+                    .background(Color.Gray)
+
+            )
+        }
+    }
+
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -97,5 +128,13 @@ fun DefaultPreview() {
 fun DefaultPreviewTest2() {
     BoxTheme {
         GreetingTest2()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreviewTest3() {
+    BoxTheme {
+        GreetingTest3()
     }
 }
