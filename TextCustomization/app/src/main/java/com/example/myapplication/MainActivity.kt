@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    DefaultPreview()
+                    DefaultPreview4()
                 }
             }
         }
@@ -96,9 +97,13 @@ fun CustomText3(){
 
 @Composable
 fun CustomText4(){
-    Column {
-        SelectionContainer{ //now allows me to copy this text
-            Text(text = "Hello World")
+    SelectionContainer {
+        Column{ //now allows me to copy this text
+            Text(text = "Text position 1")
+            DisableSelection { //now cancells every text that is inside to do not copy
+                Text(text = "Text position 2")
+            }
+            Text(text = "Text position 3")
         }
     }
 }
