@@ -93,6 +93,11 @@ fun CustomText3(){
     )
 }
 
+@Composable
+fun CustomText4(){
+    Text(text = "Hello World")
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -122,6 +127,17 @@ fun DefaultPreview3() {
         Column(
             modifier = Modifier.fillMaxSize()){
             CustomText3()
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview4() {
+    MyApplicationTheme {
+        Column(
+            modifier = Modifier.fillMaxSize()){
+            CustomText4()
         }
     }
 }
