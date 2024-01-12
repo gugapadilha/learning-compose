@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -95,7 +96,11 @@ fun CustomText3(){
 
 @Composable
 fun CustomText4(){
-    Text(text = "Hello World")
+    Column {
+        SelectionContainer{ //now allows me to copy this text
+            Text(text = "Hello World")
+        }
+    }
 }
 
 @Preview(showBackground = true)
