@@ -19,6 +19,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
@@ -108,6 +109,27 @@ fun CustomText4(){
     }
 }
 
+@Composable
+fun CustomText5(normalText: String, superText: String){
+    Text(buildAnnotatedString {
+        withStyle(
+            style = SpanStyle(
+                fontSize = MaterialTheme.typography.subtitle1.fontSize
+            )
+        ){
+            append(normalText)
+        }
+        withStyle(style = SpanStyle(
+            fontSize = MaterialTheme.typography.subtitle2.fontSize,
+            fontWeight = FontWeight.Normal,
+            baselineShift = BaselineShift.Subscript,
+        )
+        ){
+            append(superText)
+        }
+    })
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -148,6 +170,17 @@ fun DefaultPreview4() {
         Column(
             modifier = Modifier.fillMaxSize()){
             CustomText4()
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview5() {
+    MyApplicationTheme {
+        Column(
+            modifier = Modifier.fillMaxSize()){
+            CustomText5(normalText = "Hello", superText = "World!" )
         }
     }
 }
