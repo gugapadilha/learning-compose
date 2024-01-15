@@ -132,7 +132,8 @@ fun CustomText5(
         withStyle(style = SpanStyle(
             fontSize = superTextFontSize,
             fontWeight = superTextFontWeight,
-            baselineShift = BaselineShift.Subscript,
+            baselineShift = BaselineShift.Subscript, //text goes down
+            //baselineShift = BaselineShift.Superscript, //text goes up
         )
         ){
             append(superText)
