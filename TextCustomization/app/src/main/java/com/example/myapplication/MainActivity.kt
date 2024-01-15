@@ -115,13 +115,16 @@ fun CustomText5(
     normalText: String,
     superText: String,
     normalFontSize: TextUnit = MaterialTheme.typography.subtitle1.fontSize,
+    normalFontWeight: FontWeight = FontWeight.Bold,
     superTextFontSize: TextUnit = MaterialTheme.typography.subtitle2.fontSize,
     superTextFontWeight: FontWeight = FontWeight.Normal
 ){
     Text(buildAnnotatedString {
         withStyle(
             style = SpanStyle(
-                fontSize = normalFontSize
+                fontSize = normalFontSize,
+                fontWeight = normalFontWeight,
+                letterSpacing = 2.sp
             )
         ){
             append(normalText)
@@ -187,7 +190,11 @@ fun DefaultPreview5() {
     MyApplicationTheme {
         Column(
             modifier = Modifier.fillMaxSize()){
-            CustomText5(normalText = "Hello", superText = "World!" )
+            CustomText5(
+                normalText = "Gustavo",
+                superText = "Padilha",
+                superTextFontWeight = FontWeight.Light
+                )
         }
     }
 }
