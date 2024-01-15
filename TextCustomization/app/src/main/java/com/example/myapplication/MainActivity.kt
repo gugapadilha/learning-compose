@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.theme.MyApplicationTheme
@@ -110,18 +111,24 @@ fun CustomText4(){
 }
 
 @Composable
-fun CustomText5(normalText: String, superText: String){
+fun CustomText5(
+    normalText: String,
+    superText: String,
+    normalFontSize: TextUnit = MaterialTheme.typography.subtitle1.fontSize,
+    superTextFontSize: TextUnit = MaterialTheme.typography.subtitle2.fontSize,
+    superTextFontWeight: FontWeight = FontWeight.Normal
+){
     Text(buildAnnotatedString {
         withStyle(
             style = SpanStyle(
-                fontSize = MaterialTheme.typography.subtitle1.fontSize
+                fontSize = normalFontSize
             )
         ){
             append(normalText)
         }
         withStyle(style = SpanStyle(
-            fontSize = MaterialTheme.typography.subtitle2.fontSize,
-            fontWeight = FontWeight.Normal,
+            fontSize = superTextFontSize,
+            fontWeight = superTextFontWeight,
             baselineShift = BaselineShift.Subscript,
         )
         ){
