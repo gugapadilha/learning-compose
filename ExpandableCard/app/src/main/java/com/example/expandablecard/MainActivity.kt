@@ -21,7 +21,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    ExpandableCard()
+                    ExpandableCard(
+                        title = "My Title",
+                        description = "\"Lorem ipsum dolor sit amet, consectur adispcing elit," +
+                                "sed do eismow temport incidunt ut labore rt magna ali," +
+                                "enim ad minim venuiiam quis nostrud exercitation lamma" +
+                                "laboris nisi ut alinguioe ex ea commodod consqueat des",
+                    )
                 }
             }
         }
@@ -32,6 +38,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ExpandableCardTheme {
-        ExpandableCard()
+        ExpandableCard(
+            title = "My Title",
+            description = "\"Lorem ipsum dolor sit amet, consectur adispcing elit," +
+                    "sed do eismow temport incidunt ut labore rt magna ali," +
+                    "enim ad minim venuiiam quis nostrud exercitation lamma" +
+                    "laboris nisi ut alinguioe ex ea commodod consqueat des",
+        )
     }
 }
