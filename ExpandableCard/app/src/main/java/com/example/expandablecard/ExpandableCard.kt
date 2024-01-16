@@ -7,12 +7,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,12 +43,26 @@ fun ExpandableCard(){
                 .fillMaxWidth()
                 .padding(12.dp)
         ) {
-            Row {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
+                    modifier = Modifier
+                        .weight(6f) /*dividing the row into 7 parts*/,
                     text = "My Title",
                     fontSize = MaterialTheme.typography.h6.fontSize,
                     fontWeight = FontWeight.Bold,
                 )
+                IconButton(
+                    modifier = Modifier
+                        .alpha(ContentAlpha.medium)
+                        .weight(1f) /* so, icon button will only use 1f of the total 6f */,
+                    onClick = {
+                        expandedState = !expandedState
+                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowDropDown,
+                        contentDescription = "Drop-Down Arrow" )
+                }
             }
         }
     }
