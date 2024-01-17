@@ -29,6 +29,7 @@ import com.example.expandablecard.ui.theme.Shapes
 @Composable
 fun ExpandableCard2(
     title: String,
+    image: Int = R.drawable.fate,
     titleFontSize: TextUnit = MaterialTheme.typography.h6.fontSize,
     titleFontWeight: FontWeight = FontWeight.Bold,
     shape: CornerBasedShape = Shapes.medium,
@@ -87,11 +88,11 @@ fun ExpandableCard2(
             }
             if (expandedState){
                     Image(
-                        painter = painterResource(id = R.drawable.b918ddb20074b7a9fc0a874980d88014),
+                        painter = painterResource(image),
                         contentDescription = "Fate",
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(200.dp)
+                            .height(250.dp)
                     )
             }
         }
