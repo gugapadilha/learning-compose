@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -50,7 +51,7 @@ fun ExpandableCard2(
         onClick = {
             expandedState = !expandedState
         },
-        backgroundColor = MaterialTheme.colors.primary
+        backgroundColor = Color.Black
     ) {
         Column(
             modifier = Modifier
@@ -65,7 +66,8 @@ fun ExpandableCard2(
                     fontSize = titleFontSize,
                     fontWeight = titleFontWeight,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    color = Color.White
                 )
                 IconButton(
                     modifier = Modifier
@@ -78,22 +80,19 @@ fun ExpandableCard2(
                 ) {
                     Icon(
                         imageVector = Icons.Default.ArrowDropDown,
-                        contentDescription = "Drop-Down Arrow"
+                        contentDescription = "Drop-Down Arrow",
+                        tint = Color.White
                     )
                 }
             }
             if (expandedState){
-                if (expandedState) {
-                    // Substitua este bloco de Text...
                     Image(
                         painter = painterResource(id = R.drawable.b918ddb20074b7a9fc0a874980d88014),
                         contentDescription = "Fate",
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(200.dp) // Ajuste a altura conforme necessário
+                            .height(200.dp)
                     )
-                }
-
             }
         }
     }
@@ -102,6 +101,5 @@ fun ExpandableCard2(
 @Composable
 @Preview
 fun ExpandableCardPreview2(){
-    ExpandableCard2(
-        title = "Best anime ever?")
+    ExpandableCard2(title = "Best anime ever?")
 }
