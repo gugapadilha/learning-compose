@@ -31,6 +31,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
     }
 }
 
@@ -45,5 +46,13 @@ fun DefaultPreview() {
                     "enim ad minim venuiiam quis nostrud exercitation lamma" +
                     "laboris nisi ut alinguioe ex ea commodod consqueat des",
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview2() {
+    ExpandableCardTheme {
+        ExpandableCard2(title = "Best anime ever?")
     }
 }
