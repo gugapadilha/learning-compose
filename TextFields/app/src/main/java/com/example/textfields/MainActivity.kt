@@ -41,8 +41,9 @@ fun Greeting() {
     ) {
         var text by remember { mutableStateOf("Type here...") }
         TextField(value = text, onValueChange = { newText ->
-            text = newText
-        })
+            text = newText //when something change, recomposition will update the state, cause text are being observed.
+        },
+        enabled = true)
     }
 }
 
