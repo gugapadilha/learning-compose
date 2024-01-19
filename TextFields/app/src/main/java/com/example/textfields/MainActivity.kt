@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -70,8 +71,13 @@ fun Greeting() {
         },
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Email,
-            imeAction = ImeAction.Go
-        )
+            imeAction = ImeAction.Search
+        ),
+            keyboardActions = KeyboardActions(
+                onSearch = {
+                    Log.d("ImeAction", "Clicked")
+                }
+            )
         )
     }
 }
