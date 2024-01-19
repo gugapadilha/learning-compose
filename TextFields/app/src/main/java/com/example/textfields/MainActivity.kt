@@ -1,6 +1,5 @@
 package com.example.textfields
 
-import android.inputmethodservice.Keyboard
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -61,9 +60,9 @@ fun Greeting() {
             )
         },
         trailingIcon = {
-            IconButton(onClick = {}) {
+            IconButton(onClick = {
                 Log.d("Trailling Icon", "Clicked")
-            }
+            }) {}
             Icon(
                 imageVector = Icons.Filled.Check,
                 contentDescription = "Check Icon"
@@ -82,10 +81,106 @@ fun Greeting() {
     }
 }
 
+@Composable
+fun Greeting2() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        var text by remember { mutableStateOf("Type here...") }
+        OutlinedTextField(value = text, onValueChange = { newText ->
+            text = newText //when something change, recomposition will update the state, cause text are being observed.
+        },
+            label = {
+                Text(text = "Title")
+            },
+            maxLines = 1,
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Filled.Email,
+                    contentDescription = "Email Icon"
+                )
+            },
+            trailingIcon = {
+                IconButton(onClick = {
+                    Log.d("Trailling Icon", "Clicked")
+                }) {}
+                Icon(
+                    imageVector = Icons.Filled.Check,
+                    contentDescription = "Check Icon"
+                )
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Search
+            ),
+            keyboardActions = KeyboardActions(
+                onSearch = {
+                    Log.d("ImeAction", "Clicked")
+                }
+            )
+        )
+    }
+}
+
+@Composable
+fun Greeting2() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        var text by remember { mutableStateOf("Type here...") }
+        OutlinedTextField(value = text, onValueChange = { newText ->
+            text = newText //when something change, recomposition will update the state, cause text are being observed.
+        },
+            label = {
+                Text(text = "Title")
+            },
+            maxLines = 1,
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Filled.Email,
+                    contentDescription = "Email Icon"
+                )
+            },
+            trailingIcon = {
+                IconButton(onClick = {
+                    Log.d("Trailling Icon", "Clicked")
+                }) {}
+                Icon(
+                    imageVector = Icons.Filled.Check,
+                    contentDescription = "Check Icon"
+                )
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Search
+            ),
+            keyboardActions = KeyboardActions(
+                onSearch = {
+                    Log.d("ImeAction", "Clicked")
+                }
+            )
+        )
+    }
+}
+
+
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     TextFieldsTheme {
         Greeting()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview2() {
+    TextFieldsTheme {
+        Greeting2()
     }
 }
