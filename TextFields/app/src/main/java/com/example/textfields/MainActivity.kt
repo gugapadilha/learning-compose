@@ -1,6 +1,7 @@
 package com.example.textfields
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -55,6 +56,9 @@ fun Greeting() {
             )
         },
         trailingIcon = {
+            IconButton(onClick = {}) {
+                Log.d("Trailling Icon", "Clicked")
+            }
             Icon(
                 imageVector = Icons.Filled.Check,
                 contentDescription = "Check Icon"
