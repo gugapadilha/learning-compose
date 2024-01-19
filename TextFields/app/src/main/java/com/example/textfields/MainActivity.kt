@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -123,41 +124,17 @@ fun Greeting2() {
         )
     }
 }
-
 @Composable
-fun Greeting2() {
+fun Greeting3() {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         var text by remember { mutableStateOf("Type here...") }
-        OutlinedTextField(value = text, onValueChange = { newText ->
+        BasicTextField(value = text, onValueChange = { newText ->
             text = newText //when something change, recomposition will update the state, cause text are being observed.
         },
-            label = {
-                Text(text = "Title")
-            },
-            maxLines = 1,
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Filled.Email,
-                    contentDescription = "Email Icon"
-                )
-            },
-            trailingIcon = {
-                IconButton(onClick = {
-                    Log.d("Trailling Icon", "Clicked")
-                }) {}
-                Icon(
-                    imageVector = Icons.Filled.Check,
-                    contentDescription = "Check Icon"
-                )
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Email,
-                imeAction = ImeAction.Search
-            ),
             keyboardActions = KeyboardActions(
                 onSearch = {
                     Log.d("ImeAction", "Clicked")
@@ -166,8 +143,6 @@ fun Greeting2() {
         )
     }
 }
-
-
 
 @Preview(showBackground = true)
 @Composable
@@ -182,5 +157,13 @@ fun DefaultPreview() {
 fun DefaultPreview2() {
     TextFieldsTheme {
         Greeting2()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview3() {
+    TextFieldsTheme {
+        Greeting3()
     }
 }
