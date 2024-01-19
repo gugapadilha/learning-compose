@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -43,7 +44,9 @@ fun Greeting() {
         TextField(value = text, onValueChange = { newText ->
             text = newText //when something change, recomposition will update the state, cause text are being observed.
         },
-        enabled = true)
+        label = {
+            Text(text = "Title")
+        })
     }
 }
 
