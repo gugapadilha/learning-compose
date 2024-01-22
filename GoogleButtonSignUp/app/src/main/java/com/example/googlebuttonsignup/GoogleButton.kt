@@ -14,20 +14,31 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.googlebuttonsignup.ui.theme.Shapes
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun GoogleButton(){
+fun GoogleButton(
+    text: String = "Sign Up with Google",
+    loadingText: String = "Creating Account...",
+    icon: Painter = painterResource(id = R.drawable.ic_google_logo),
+    shape: Shape = Shapes.medium,
+    borderColor: Color = Color.LightGray,
+    backgroundColor: Color = MaterialTheme.colors.surface,
+    progressIndicationColor: Color = MaterialTheme.colors.primary,
+    onClicked: () -> Unit
+){
     var clicked by remember { mutableStateOf(false) }
 
     Surface(
         onClick = {clicked = !clicked}, //if is false will change to true and vice versa
-        shape = Shapes.medium,
-        border = BorderStroke(width = 1.dp, color = Color.LightGray),
-        color = MaterialTheme.colors.surface
+        shape = shape,
+        border = BorderStroke(width = 1.dp, color = borderColor),
+        color = backgroundColor
     ) {
         Row(
             modifier = Modifier
@@ -46,11 +57,13 @@ fun GoogleButton(){
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Icon(painter = painterResource(id = R.drawable.ic_google_logo),
+            Icon(painter = icon,
                 contentDescription = "Google Button",
                 tint = Color.Unspecified)
+
             Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Sign up with Google")
+
+            Text(text = if (clicked) loadingText else text)
             if(clicked){
                 Spacer(modifier = Modifier.width(16.dp))
                 CircularProgressIndicator(
@@ -58,8 +71,9 @@ fun GoogleButton(){
                         .height(16.dp)
                         .width(16.dp),
                     strokeWidth = 2.dp,
-                    color = MaterialTheme.colors.primary
+                    color = progressIndicationColor
                 )
+                onClicked()
             }
         }
     }
@@ -68,5 +82,9 @@ fun GoogleButton(){
 @Composable
 @Preview
 private fun GoogleButtonPreview(){
-    GoogleButton()
+    GoogleButton(
+        text = "Sign up with Google",
+        loadingText = "Creating Account...",
+        onClicked = {}
+    )
 }
