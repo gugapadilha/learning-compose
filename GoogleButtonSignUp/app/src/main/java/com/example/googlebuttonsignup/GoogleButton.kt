@@ -59,11 +59,11 @@ fun GoogleButton(
         ) {
             Icon(painter = icon,
                 contentDescription = "Google Button",
-                tint = Color.Unspecified)
-
+                tint = Color.Unspecified
+            )
             Spacer(modifier = Modifier.width(8.dp))
+            Text(text = if (clicked) loadingText else text) //when text is clicked, show other text
 
-            Text(text = if (clicked) loadingText else text)
             if(clicked){
                 Spacer(modifier = Modifier.width(16.dp))
                 CircularProgressIndicator(
