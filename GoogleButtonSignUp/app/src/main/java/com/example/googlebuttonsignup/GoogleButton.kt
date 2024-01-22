@@ -2,10 +2,7 @@ package com.example.googlebuttonsignup
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,7 +25,10 @@ fun GoogleButton(){
         color = MaterialTheme.colors.surface
     ) {
         Row {
-           Icon(painter = painterResource(id = R.drawable.ic_google_logo), contentDescription = "Google Button")
+            Icon(painter = painterResource(id = R.drawable.ic_google_logo),
+                contentDescription = "Google Button",
+                tint = Color.Unspecified)
+            Text(text = "Sign up with Google")
         }
     }
 }
