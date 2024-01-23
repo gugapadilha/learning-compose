@@ -78,7 +78,7 @@ fun GoogleButton(
         }
     }
 }
-
+//ROW -> //// //// //// ////
 @Composable
 @Preview
 private fun GoogleButtonPreview(){
@@ -148,7 +148,9 @@ fun GoogleButton2(
         }
     }
 }
-
+//COLUMN -> ////
+//          ////
+//          ////
 @Composable
 @Preview
 private fun GoogleButtonPreview2(){
