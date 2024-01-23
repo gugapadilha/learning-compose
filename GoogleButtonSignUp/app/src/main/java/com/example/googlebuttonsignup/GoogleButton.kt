@@ -88,3 +88,73 @@ private fun GoogleButtonPreview(){
         onClicked = {}
     )
 }
+
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun GoogleButton2(
+    text: String = "Sign Up with Google",
+    loadingText: String = "Creating Account...",
+    icon: Painter = painterResource(id = R.drawable.ic_google_logo),
+    shape: Shape = Shapes.medium,
+    borderColor: Color = Color.LightGray,
+    backgroundColor: Color = MaterialTheme.colors.surface,
+    progressIndicationColor: Color = MaterialTheme.colors.primary,
+    onClicked: () -> Unit
+){
+    var clicked by remember { mutableStateOf(false) }
+
+    Surface(
+        onClick = {clicked = !clicked}, //if is false will change to true and vice versa
+        shape = shape,
+        border = BorderStroke(width = 1.dp, color = borderColor),
+        color = backgroundColor
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(
+                    start = 12.dp,
+                    end = 16.dp,
+                    top = 12.dp,
+                    bottom = 12.dp
+                )
+                .animateContentSize(
+                    animationSpec = tween(
+                        durationMillis = 300,
+                        easing = LinearOutSlowInEasing
+                    )
+                ),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Icon(painter = icon,
+                contentDescription = "Google Button",
+                tint = Color.Unspecified
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = if (clicked) loadingText else text) //when text is clicked, show other text
+
+            if(clicked){
+                Spacer(modifier = Modifier.width(16.dp))
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .height(16.dp)
+                        .width(16.dp),
+                    strokeWidth = 2.dp,
+                    color = progressIndicationColor
+                )
+                onClicked()
+            }
+        }
+    }
+}
+
+@Composable
+@Preview
+private fun GoogleButtonPreview2(){
+    GoogleButton2(
+        text = "Sign up with Google",
+        loadingText = "Creating Account...",
+        onClicked = {}
+    )
+}
