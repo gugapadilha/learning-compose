@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ImageLoadingCoil</string>
     <string name="image_url">https://avatars.githubusercontent.com/u/14994036?v=4</string>
+    <string name="image_url2">https://i.pinimg.com/originals/b9/18/dd/b918ddb20074b7a9fc0a874980d88014.jpg</string>
 </resources>
