@@ -18,6 +18,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -153,13 +154,28 @@ fun Greeting4() {
         verticalArrangement = Arrangement.Center
     ) {
         var password by rememberSaveable { mutableStateOf("") } //rememberSavable keeps the activity lifecycle if rotates the screen for example
+        var passwordVisibility by remember { mutableStateOf(false)}
+
+        val icon = if (passwordVisibility){
+            painterResource(id = R.drawable.baseline_visibility_24)
+        } else {
+            painterResource(id = R.drawable.baseline_visibility_off_24)
+        }
 
         OutlinedTextField(value = password,
         onValueChange = {
             password = it
         },
         placeholder = {Text(text = "Password")},
-        label = { Text(text = "Password")}
+        label = { Text(text = "Password")},
+            trailingIcon = {
+                IconButton(onClick = {
+                    passwordVisibility = !passwordVisibility
+                }) {
+                    Icon(painter = icon,
+                        contentDescription = "Visibility icon")
+                }
+            }
         )
     }
 }
