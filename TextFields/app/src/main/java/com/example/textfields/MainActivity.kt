@@ -158,7 +158,9 @@ fun Greeting4() {
         onValueChange = {
             password = it
         },
-        placeholder = {Text(text = "Password")})
+        placeholder = {Text(text = "Password")},
+        label = { Text(text = "Password")}
+        )
     }
 }
 
