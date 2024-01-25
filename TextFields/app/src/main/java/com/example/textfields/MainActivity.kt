@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -52,50 +53,8 @@ fun Greeting() {
     ) {
         var text by remember { mutableStateOf("Type here...") }
         TextField(value = text, onValueChange = { newText ->
-            text = newText //when something change, recomposition will update the state, cause text are being observed.
-        },
-        label = {
-            Text(text = "Title")
-        },
-        maxLines = 1,
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Filled.Email,
-                contentDescription = "Email Icon"
-            )
-        },
-        trailingIcon = {
-            IconButton(onClick = {
-                Log.d("Trailling Icon", "Clicked")
-            }) {}
-            Icon(
-                imageVector = Icons.Filled.Check,
-                contentDescription = "Check Icon"
-            )
-        },
-        keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Email,
-            imeAction = ImeAction.Search
-        ),
-            keyboardActions = KeyboardActions(
-                onSearch = {
-                    Log.d("ImeAction", "Clicked")
-                }
-            )
-        )
-    }
-}
-
-@Composable
-fun Greeting2() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        var text by remember { mutableStateOf("Type here...") }
-        OutlinedTextField(value = text, onValueChange = { newText ->
-            text = newText //when something change, recomposition will update the state, cause text are being observed.
+            text =
+                newText //when something change, recomposition will update the state, cause text are being observed.
         },
             label = {
                 Text(text = "Title")
@@ -128,6 +87,51 @@ fun Greeting2() {
         )
     }
 }
+
+@Composable
+fun Greeting2() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        var text by remember { mutableStateOf("Type here...") }
+        OutlinedTextField(value = text, onValueChange = { newText ->
+            text =
+                newText //when something change, recomposition will update the state, cause text are being observed.
+        },
+            label = {
+                Text(text = "Title")
+            },
+            maxLines = 1,
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Filled.Email,
+                    contentDescription = "Email Icon"
+                )
+            },
+            trailingIcon = {
+                IconButton(onClick = {
+                    Log.d("Trailling Icon", "Clicked")
+                }) {}
+                Icon(
+                    imageVector = Icons.Filled.Check,
+                    contentDescription = "Check Icon"
+                )
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Search
+            ),
+            keyboardActions = KeyboardActions(
+                onSearch = {
+                    Log.d("ImeAction", "Clicked")
+                }
+            )
+        )
+    }
+}
+
 @Composable
 fun Greeting3() {
     Column(
@@ -137,7 +141,8 @@ fun Greeting3() {
     ) {
         var text by remember { mutableStateOf("Type here...") }
         BasicTextField(value = text, onValueChange = { newText ->
-            text = newText //when something change, recomposition will update the state, cause text are being observed.
+            text =
+                newText //when something change, recomposition will update the state, cause text are being observed.
         },
             keyboardActions = KeyboardActions(
                 onSearch = {
@@ -156,34 +161,113 @@ fun Greeting4() {
         verticalArrangement = Arrangement.Center
     ) {
         var password by rememberSaveable { mutableStateOf("") } //rememberSavable keeps the activity lifecycle if rotates the screen for example
-        var passwordVisibility by remember { mutableStateOf(false)}
+        var passwordVisibility by remember { mutableStateOf(false) }
 
-        val icon = if (passwordVisibility){
+        val icon = if (passwordVisibility) {
             painterResource(id = R.drawable.baseline_visibility_24)
         } else {
             painterResource(id = R.drawable.baseline_visibility_off_24)
         }
 
-        OutlinedTextField(value = password,
-        onValueChange = {
-            password = it
-        },
-        placeholder = {Text(text = "Password")},
-        label = { Text(text = "Password")},
+        OutlinedTextField(
+            value = password,
+            onValueChange = {
+                password = it
+            },
+            placeholder = { Text(text = "Password") },
+            label = { Text(text = "Password") },
             trailingIcon = {
                 IconButton(onClick = {
                     passwordVisibility = !passwordVisibility
                 }) {
-                    Icon(painter = icon,
-                        contentDescription = "Visibility icon")
+                    Icon(
+                        painter = icon,
+                        contentDescription = "Visibility icon"
+                    )
                 }
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password
             ),
-            visualTransformation = if(passwordVisibility) VisualTransformation.None
-                                   else PasswordVisualTransformation()
+            visualTransformation = if (passwordVisibility) VisualTransformation.None
+            else PasswordVisualTransformation()
         )
+    }
+}
+
+@Composable
+fun Greeting5() {
+    Row(
+        modifier = Modifier.fillMaxSize(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            var text by remember { mutableStateOf("") }
+            OutlinedTextField(
+                value = text, onValueChange = { newText ->
+                    text =
+                        newText //when something change, recomposition will update the state, cause text are being observed.
+                },
+                label = {
+                    Text(text = "Email")
+                },
+                maxLines = 1,
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Email,
+                        contentDescription = "Email Icon"
+                    )
+                },
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Check,
+                        contentDescription = "Check Icon"
+                    )
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Done
+                )
+            )
+
+            var password by rememberSaveable { mutableStateOf("") } //rememberSavable keeps the activity lifecycle if rotates the screen for example
+            var passwordVisibility by remember { mutableStateOf(false) }
+
+            val icon = if (passwordVisibility) {
+                painterResource(id = R.drawable.baseline_visibility_24)
+            } else {
+                painterResource(id = R.drawable.baseline_visibility_off_24)
+            }
+
+            OutlinedTextField(
+                value = password,
+                onValueChange = {
+                    password = it
+                },
+                placeholder = { Text(text = "Password") },
+                label = { Text(text = "Password") },
+                trailingIcon = {
+                    IconButton(onClick = {
+                        passwordVisibility = !passwordVisibility
+                    }) {
+                        Icon(
+                            painter = icon,
+                            contentDescription = "Visibility icon"
+                        )
+                    }
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Password
+                ),
+                visualTransformation = if (passwordVisibility) VisualTransformation.None
+                else PasswordVisualTransformation()
+            )
+        }
     }
 }
 
@@ -217,5 +301,13 @@ fun DefaultPreview3() {
 fun DefaultPreview4() {
     TextFieldsTheme {
         Greeting4()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview5() {
+    TextFieldsTheme {
+        Greeting5()
     }
 }
