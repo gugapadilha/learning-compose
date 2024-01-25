@@ -267,6 +267,7 @@ fun Greeting5() {
                         contentDescription = "Lock icon"
                     )
                 },
+                maxLines = 1,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Password,
                     imeAction = ImeAction.Done
