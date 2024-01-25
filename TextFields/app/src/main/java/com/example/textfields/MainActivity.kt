@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
@@ -144,6 +145,24 @@ fun Greeting3() {
     }
 }
 
+@Composable
+fun Greeting4() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        var password by rememberSaveable { mutableStateOf("") } //rememberSavable keeps the activity lifecycle if rotates the screen for example
+
+        OutlinedTextField(value = password,
+        onValueChange = {
+            password = it
+        },
+        placeholder = {Text(text = "Password")})
+    }
+}
+
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -165,5 +184,13 @@ fun DefaultPreview2() {
 fun DefaultPreview3() {
     TextFieldsTheme {
         Greeting3()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview4() {
+    TextFieldsTheme {
+        Greeting4()
     }
 }
