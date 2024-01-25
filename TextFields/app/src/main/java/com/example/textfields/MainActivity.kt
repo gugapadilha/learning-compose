@@ -231,7 +231,7 @@ fun Greeting5() {
                 },
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email,
-                    imeAction = ImeAction.Done
+                    imeAction = ImeAction.Next
                 )
             )
 
@@ -261,8 +261,15 @@ fun Greeting5() {
                         )
                     }
                 },
+                leadingIcon = {
+                    Icon(
+                        painterResource(id = R.drawable.baseline_lock_24),
+                        contentDescription = "Lock icon"
+                    )
+                },
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Password
+                    keyboardType = KeyboardType.Password,
+                    imeAction = ImeAction.Done
                 ),
                 visualTransformation = if (passwordVisibility) VisualTransformation.None
                 else PasswordVisualTransformation()
