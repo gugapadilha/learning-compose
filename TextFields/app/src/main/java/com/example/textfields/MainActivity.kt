@@ -21,6 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.textfields.ui.theme.TextFieldsTheme
 
@@ -175,7 +177,12 @@ fun Greeting4() {
                     Icon(painter = icon,
                         contentDescription = "Visibility icon")
                 }
-            }
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password
+            ),
+            visualTransformation = if(passwordVisibility) VisualTransformation.None
+                                   else PasswordVisualTransformation()
         )
     }
 }
