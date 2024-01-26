@@ -72,6 +72,25 @@ fun GradientButton2(
     Spacer(modifier = Modifier.padding(16.dp))
 
 }
+@Composable
+fun GradientButton3(gradient: Brush){
+    Button(
+        onClick = { },
+        colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+        contentPadding = PaddingValues(),
+        modifier = Modifier
+            .height(50.dp)
+            .width(100.dp)
+            .background(gradient)
+            .padding(8.dp),
+    ) {
+        Text(
+            text = "Sim",
+            modifier = Modifier.align(Alignment.CenterVertically), // Alinha o texto verticalmente ao centro
+            color = Color.White
+        )
+    }
+}
 
 @Preview
 @Composable
@@ -103,4 +122,18 @@ fun GradientButtonPreview2(){
             )
         )
     ) {}
+}
+
+@Preview
+@Composable
+fun GradientButtonPreview3(){
+    GradientButton3(
+        gradient = Brush.horizontalGradient(
+            listOf(
+                color1,
+                color4
+            )
+        )
+    )
+
 }
