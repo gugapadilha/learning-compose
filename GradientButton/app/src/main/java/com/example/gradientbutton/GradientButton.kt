@@ -2,6 +2,7 @@ package com.example.gradientbutton
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -26,6 +27,7 @@ fun GradientButton(
 
     Button(
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+        contentPadding = PaddingValues(), //used to do corner rounded shape for button
         onClick = { onClick() })
     {
         Box(
@@ -52,7 +54,5 @@ fun GradientButtonPreview(){
                 color2
             )
         )
-    ) {
-
-    }
+    ) {}
 }
