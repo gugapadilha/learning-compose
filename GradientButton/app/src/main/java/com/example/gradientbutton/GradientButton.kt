@@ -1,9 +1,7 @@
 package com.example.gradientbutton
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
@@ -33,12 +31,15 @@ fun GradientButton(
         Box(
             modifier = Modifier
                 .background(gradient)
-                .padding(horizontal = 16.dp, vertical = 8.dp),
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .height(50.dp)
+                .width(100.dp),
             contentAlignment = Alignment.Center
         ){
             Text(text = text, color = textColor)
         }
     }
+    Spacer(modifier = Modifier.padding(16.dp))
 
 }
 
