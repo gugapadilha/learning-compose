@@ -9,3 +9,5 @@ val Teal200 = Color(0xFF03DAC5)
 
 val color1 = Color(0xFF642B73)
 val color2 = Color(0xFFC6426E)
+val color3 = Color(0xFFC6464D)
+val color4 = Color(0xFFC6364D)

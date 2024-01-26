@@ -14,9 +14,39 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.gradientbutton.ui.theme.color1
 import com.example.gradientbutton.ui.theme.color2
+import com.example.gradientbutton.ui.theme.color3
+import com.example.gradientbutton.ui.theme.color4
 
 @Composable
 fun GradientButton(
+    text: String,
+    textColor: Color,
+    gradient: Brush,
+    onClick: () -> Unit
+){
+
+    Button(
+        colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+        contentPadding = PaddingValues(), //used to do corner rounded shape for button
+        onClick = { onClick() })
+    {
+        Box(
+            modifier = Modifier
+                .background(gradient)
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .height(50.dp)
+                .width(100.dp),
+            contentAlignment = Alignment.Center
+        ){
+            Text(text = text, color = textColor)
+        }
+    }
+    Spacer(modifier = Modifier.padding(16.dp))
+
+}
+
+@Composable
+fun GradientButton2(
     text: String,
     textColor: Color,
     gradient: Brush,
@@ -53,6 +83,23 @@ fun GradientButtonPreview(){
             colors = listOf(
                 color1,
                 color2
+            )
+        )
+    ) {}
+}
+
+@Preview
+@Composable
+fun GradientButtonPreview2(){
+    GradientButton(
+        text = "Button",
+        textColor = Color.White,
+        gradient = Brush.horizontalGradient(
+            colors = listOf(
+                color4,
+                color3,
+                color2,
+                color1
             )
         )
     ) {}
