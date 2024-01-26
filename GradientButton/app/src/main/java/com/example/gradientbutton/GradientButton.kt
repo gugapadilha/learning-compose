@@ -110,7 +110,7 @@ fun GradientButtonPreview(){
 @Preview
 @Composable
 fun GradientButtonPreview2(){
-    GradientButton(
+    GradientButton2(
         text = "Button",
         textColor = Color.White,
         gradient = Brush.horizontalGradient(
