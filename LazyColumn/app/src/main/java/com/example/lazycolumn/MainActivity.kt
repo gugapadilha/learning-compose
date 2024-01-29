@@ -6,10 +6,15 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.lazycolumn.model.Person
 import com.example.lazycolumn.repository.PersonRepository
 import com.example.lazycolumn.ui.CustomItem
+import com.example.lazycolumn.ui.CustomItem2
 import com.example.lazycolumn.ui.theme.LazyColumnTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,8 +33,15 @@ class MainActivity : ComponentActivity() {
                         CustomItem(person = person)
                     }
                 }
+                /*LazyRow(
+                    contentPadding = PaddingValues(all = 12.dp), //padding for all borders
+                    horizontalArrangement = Arrangement.spacedBy(12.dp) // spacing between every Person
+                ) {
+                    items(items = getAllData) { person ->
+                        CustomItem(person = person)
+                    }
+                }*/
             }
         }
     }
 }
-

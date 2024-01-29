@@ -45,9 +45,54 @@ fun CustomItem(person: Person){
 }
 
 @Composable
+fun CustomItem2(person: Person){
+    Column(
+        modifier = Modifier
+            .background(Color.LightGray)
+            .fillMaxWidth()
+            .padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        Text(
+            text = "${person.age}",
+            color = Color.Black,
+            fontSize = Typography.h4.fontSize,
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            text = person.firstName,
+            color = Color.Black,
+            fontSize = Typography.h5.fontSize,
+            fontWeight = FontWeight.Normal
+        )
+        Text(
+            text = person.lastName,
+            color = Color.Black,
+            fontSize = Typography.h5.fontSize,
+            fontWeight = FontWeight.Normal
+        )
+    }
+}
+
+
+@Composable
 @Preview
 fun CustomItemPreview(){
     CustomItem(
+        person = Person(
+            id = 0,
+            firstName = "Gustavo",
+            lastName = "Padilha",
+            age = 22
+        )
+    )
+}
+
+@Composable
+@Preview
+fun CustomItemPreview2(){
+    CustomItem2(
         person = Person(
             id = 0,
             firstName = "Gustavo",
