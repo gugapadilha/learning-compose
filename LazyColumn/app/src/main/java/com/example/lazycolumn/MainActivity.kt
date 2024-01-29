@@ -17,19 +17,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LazyColumnTheme {
-               val personRepository = PersonRepository()
+                val personRepository = PersonRepository()
                 val getAllData = personRepository.getAllData()
-                
+
                 LazyColumn(
                     contentPadding = PaddingValues(all = 12.dp), //padding for all borders
                     verticalArrangement = Arrangement.spacedBy(12.dp) // spacing between every Person
-                ){
-                    items(items = getAllData){ person ->
-                        CustomItem(person =  person)
+                ) {
+                    items(items = getAllData) { person ->
+                        CustomItem(person = person)
                     }
-                }
                 }
             }
         }
     }
+}
 
