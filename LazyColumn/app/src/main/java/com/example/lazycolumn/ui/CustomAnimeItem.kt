@@ -20,14 +20,14 @@ fun CustomAnimeItem(anime: Anime){
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.LightGray)
+            .background(Color.Black)
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Text(
             text = "${anime.order}",
-            color = Color.Black,
+            color = Color.White,
             fontSize = Typography.h5.fontSize,
             fontWeight = FontWeight.Light
         )
@@ -41,9 +41,19 @@ fun CustomAnimeItem(anime: Anime){
         )
         Text(
             text = anime.name,
-            color = Color.Black,
+            color = Color.White,
             fontSize = Typography.h4.fontSize,
             fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(12.dp)
+            .background(Color.Black)
+        )
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(1.dp)
+            .background(Color.White)
         )
     }
 
