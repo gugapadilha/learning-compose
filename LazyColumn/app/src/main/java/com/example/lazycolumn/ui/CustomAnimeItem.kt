@@ -16,7 +16,15 @@ import com.example.lazycolumn.model.Anime
 import com.example.lazycolumn.ui.theme.Typography
 
 @Composable
-fun CustomAnimeItem(anime: Anime){
+fun CustomAnimeItem(anime: Anime, position: Int){
+    val defaultColor = Color.White
+    val textColor = when (position) {
+        0 -> Color(0xFFFFD700)
+        1 -> Color(0xFFC0C0C0)
+        2 -> Color(0xFFCD7F32)
+        else -> defaultColor
+    }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -26,15 +34,15 @@ fun CustomAnimeItem(anime: Anime){
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "${anime.order}",
-            color = Color.White,
+            text = "${anime.order}°",
+            color = textColor, // Usar a cor determinada
             fontSize = Typography.h5.fontSize,
             fontWeight = FontWeight.Light
         )
         Image(
             painter = rememberImagePainter(data = anime.photoUrl, builder = {
             }),
-            contentDescription = "Anime icon",
+            contentDescription = "Anime picture",
             modifier = Modifier
                 .height(200.dp)
                 .fillMaxWidth()
@@ -47,7 +55,7 @@ fun CustomAnimeItem(anime: Anime){
         )
         Spacer(modifier = Modifier
             .fillMaxWidth()
-            .height(12.dp)
+            .height(10.dp)
             .background(Color.Black)
         )
         Spacer(modifier = Modifier
@@ -56,7 +64,6 @@ fun CustomAnimeItem(anime: Anime){
             .background(Color.White)
         )
     }
-
 }
 
 @Composable
@@ -68,6 +75,7 @@ fun CustomAnimePreview(){
             order = 1,
             name = "Fate Zero",
             photoUrl = "https://www.crunchyroll.com/imgsrv/display/thumbnail/1200x675/catalog/crunchyroll/fdc0dff409f19dfd8ffff5037257ac98.jpe"
-        )
+        ),
+        position = 0
     )
 }

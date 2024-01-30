@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,7 +29,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LazyColumnTheme {
-                /*val personRepository = PersonRepository()
+                val animeRepository = AnimeRepository()
+                val getAllAnimeData = animeRepository.getAllData()
+
+                LazyColumn() {
+                    itemsIndexed(items = getAllAnimeData) { index, anime ->
+                        CustomAnimeItem(anime = anime, position = index)
+                    }
+                }
+            }
+        }
+    }
+}
+/*
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            LazyColumnTheme {
+                val personRepository = PersonRepository()
                 val getAllData = personRepository.getAllData()
 
                 LazyColumn(
@@ -38,7 +56,7 @@ class MainActivity : ComponentActivity() {
                     items(items = getAllData) { person ->
                         CustomItem(person = person)
                     }
-                }*/
+                }
                 /*LazyRow(
                     contentPadding = PaddingValues(all = 12.dp), //padding for all borders
                     horizontalArrangement = Arrangement.spacedBy(12.dp) // spacing between every Person
@@ -47,16 +65,8 @@ class MainActivity : ComponentActivity() {
                         CustomItem(person = person)
                     }
                 }*/
-
-                val animeRepository = AnimeRepository()
-                val getAllAnimeData = animeRepository.getAllData()
-
-                LazyColumn() {
-                    items(items = getAllAnimeData) { anime ->
-                        CustomAnimeItem(anime = anime)
-                    }
-                }
             }
         }
     }
 }
+*/
