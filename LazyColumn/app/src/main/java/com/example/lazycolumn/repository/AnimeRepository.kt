@@ -14,7 +14,7 @@ class AnimeRepository {
             Anime(
                 id = 1,
                 order = 2,
-                name = "Cyberpunk Edgerunners",
+                name = "Edgerunners",
                 photoUrl = "https://i0.wp.com/cuatrobastardos.com/wp-content/uploads/2022/10/Cyberpunk-Edgerunners-cover-1.jpg?fit=2000%2C1125&ssl=1"
             ),
             Anime(

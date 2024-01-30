@@ -12,7 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.lazycolumn.model.Person
+import com.example.lazycolumn.repository.AnimeRepository
 import com.example.lazycolumn.repository.PersonRepository
+import com.example.lazycolumn.ui.CustomAnimeItem
 import com.example.lazycolumn.ui.CustomItem
 import com.example.lazycolumn.ui.CustomItem2
 import com.example.lazycolumn.ui.theme.LazyColumnTheme
@@ -22,7 +24,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LazyColumnTheme {
-                val personRepository = PersonRepository()
+                /*val personRepository = PersonRepository()
                 val getAllData = personRepository.getAllData()
 
                 LazyColumn(
@@ -32,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     items(items = getAllData) { person ->
                         CustomItem(person = person)
                     }
-                }
+                }*/
                 /*LazyRow(
                     contentPadding = PaddingValues(all = 12.dp), //padding for all borders
                     horizontalArrangement = Arrangement.spacedBy(12.dp) // spacing between every Person
@@ -41,6 +43,17 @@ class MainActivity : ComponentActivity() {
                         CustomItem(person = person)
                     }
                 }*/
+
+                val animeRepository = AnimeRepository()
+                val getAllAnimeData = animeRepository.getAllData()
+
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(12.dp) // spacing between every Person
+                ) {
+                    items(items = getAllAnimeData) { anime ->
+                        CustomAnimeItem(anime = anime)
+                    }
+                }
             }
         }
     }
