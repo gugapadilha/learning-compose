@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.example.lazycolumn.model.Person
 import com.example.lazycolumn.repository.AnimeRepository
 import com.example.lazycolumn.repository.PersonRepository
+import com.example.lazycolumn.ui.AnimeListScreen
 import com.example.lazycolumn.ui.CustomAnimeItem
 import com.example.lazycolumn.ui.CustomItem
 import com.example.lazycolumn.ui.CustomItem2
@@ -29,14 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LazyColumnTheme {
-                val animeRepository = AnimeRepository()
-                val getAllAnimeData = animeRepository.getAllData()
-
-                LazyColumn() {
-                    itemsIndexed(items = getAllAnimeData) { index, anime ->
-                        CustomAnimeItem(anime = anime, position = index)
-                    }
-                }
+                AnimeListScreen()
             }
         }
     }
