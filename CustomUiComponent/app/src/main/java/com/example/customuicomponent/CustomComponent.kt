@@ -21,7 +21,7 @@ fun CustomComponent(
     canvasSize: Dp = 300.dp,
     indicationValue: Int = 0,
     maxIndicationValue: Int = 100,
-    backgroundIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled) ,
+    backgroundIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.1f) ,
     backgrondIndicatorStrokeWidth: Float = 100f
 ){
     Column(
@@ -48,12 +48,16 @@ fun DrawScope.backgroundIndicator(
     drawArc(
         size = componentSize,
         color = indicatorColor,
-        startAngle = 150f,
-        sweepAngle = 240f,
+        startAngle = 150f, //starting angle
+        sweepAngle = 240f, //shape distance around the 360 clock
         useCenter = false,
         style = Stroke(
             width = indicatorStrokeWidth,
             cap = StrokeCap.Round
+        ),
+        topLeft = Offset(
+            x = (size.width - componentSize.width) / 2f ,
+            y = (size.height - componentSize.width) / 2f ,
         )
     )
 }
