@@ -162,6 +162,7 @@ fun Greeting4() {
     ) {
         var password by rememberSaveable { mutableStateOf("") } //rememberSavable keeps the activity lifecycle if rotates the screen for example
         var passwordVisibility by remember { mutableStateOf(false) }
+        val maxChar = 10
 
         val icon = if (passwordVisibility) {
             painterResource(id = R.drawable.baseline_visibility_24)
@@ -172,7 +173,9 @@ fun Greeting4() {
         OutlinedTextField(
             value = password,
             onValueChange = {
-                password = it
+                if (it.length <= maxChar){
+                    password = it
+            }
             },
             placeholder = { Text(text = "Password") },
             label = { Text(text = "Password") },
