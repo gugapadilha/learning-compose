@@ -1,9 +1,11 @@
 package com.example.customuicomponent
 
-import android.graphics.Color
-import android.util.Size
+import androidx.compose.ui.graphics.*
+import androidx.compose.ui.geometry.*
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -18,14 +20,20 @@ import androidx.compose.ui.unit.dp
 fun CustomComponent(
     canvasSize: Dp = 300.dp,
     indicationValue: Int = 0,
-    maxIndicationValue: Int = 100
+    maxIndicationValue: Int = 100,
+    backgroundIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled) ,
+    backgrondIndicatorStrokeWidth: Float = 100f
 ){
     Column(
         modifier = Modifier
             .size(canvasSize)
             .drawBehind {
                 val componentSize = size / 1.25f
-                backgroundIndicator()
+                backgroundIndicator(
+                    componentSize = componentSize,
+                    indicatorColor = backgroundIndicatorColor,
+                    indicatorStrokeWidth = backgrondIndicatorStrokeWidth
+                )
             }
     ) {
 
@@ -34,10 +42,11 @@ fun CustomComponent(
 
 fun DrawScope.backgroundIndicator(
     componentSize: Size,
-    indicatorColor: androidx.compose.ui.graphics.Color,
+    indicatorColor: Color,
     indicatorStrokeWidth: Float
 ){
     drawArc(
+        size = componentSize,
         color = indicatorColor,
         startAngle = 150f,
         sweepAngle = 240f,
@@ -50,7 +59,7 @@ fun DrawScope.backgroundIndicator(
 }
 
 @Composable
-@Preview
+@Preview(showBackground = true)
 fun CustomComponentPreview(){
-
+    CustomComponent()
 }
