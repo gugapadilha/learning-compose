@@ -57,7 +57,30 @@ fun DrawScope.backgroundIndicator(
         ),
         topLeft = Offset(
             x = (size.width - componentSize.width) / 2f ,
-            y = (size.height - componentSize.width) / 2f ,
+            y = (size.height - componentSize.height) / 2f ,
+        )
+    )
+}
+
+fun DrawScope.foregroundIndicatior(
+    sweepAngle: Float,
+    componentSize: Size,
+    indicatorColor: Color,
+    indicatorStrokeWidth: Float
+){
+    drawArc(
+        size = componentSize,
+        color = indicatorColor,
+        startAngle = 150f, //starting angle
+        sweepAngle = sweepAngle, //shape distance around the 360 clock
+        useCenter = false,
+        style = Stroke(
+            width = indicatorStrokeWidth,
+            cap = StrokeCap.Round
+        ),
+        topLeft = Offset(
+            x = (size.width - componentSize.width) / 2f ,
+            y = (size.height - componentSize.height) / 2f ,
         )
     )
 }
