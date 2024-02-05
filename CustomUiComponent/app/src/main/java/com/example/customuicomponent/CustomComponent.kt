@@ -1,14 +1,10 @@
 package com.example.customuicomponent
 
-import androidx.compose.animation.Animatable
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.geometry.*
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.StrokeCap
@@ -18,15 +14,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.animation.core.*
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 
 @Composable
 fun CustomComponent(
     canvasSize: Dp = 300.dp,
     indicationValue: Int = 0,
     maxIndicationValue: Int = 100,
-    backgroundIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.1f) ,
+    backgroundIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.1f),
     backgrondIndicatorStrokeWidth: Float = 100f,
     foregroundIndicatorColor: Color = MaterialTheme.colors.primary,
     foregroundIndicatorStrokeWidht: Float = 100f
@@ -39,7 +34,7 @@ fun CustomComponent(
     val percentage = (animatedIndicatorValue.value / maxIndicationValue) * 100
 
     val sweepAngle by animateFloatAsState(
-        targetValue = (2.4 * percentage).toFloat(),
+        targetValue = (2.4 * percentage).toFloat(), //using 2.4 cause of 240 that we are using to do de max angle
         animationSpec = tween(1000)
     )
 
