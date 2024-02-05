@@ -22,7 +22,9 @@ fun CustomComponent(
     indicationValue: Int = 0,
     maxIndicationValue: Int = 100,
     backgroundIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.1f) ,
-    backgrondIndicatorStrokeWidth: Float = 100f
+    backgrondIndicatorStrokeWidth: Float = 100f,
+    foregroundIndicatorColor: Color = MaterialTheme.colors.primary,
+    foregroundIndicatorStrokeWidht: Float = 100f
 ){
     Column(
         modifier = Modifier
@@ -32,6 +34,12 @@ fun CustomComponent(
                 backgroundIndicator(
                     componentSize = componentSize,
                     indicatorColor = backgroundIndicatorColor,
+                    indicatorStrokeWidth = backgrondIndicatorStrokeWidth
+                )
+                foregroundIndicatior(
+                    sweepAngle = 120f,
+                    componentSize = componentSize,
+                    indicatorColor = foregroundIndicatorColor,
                     indicatorStrokeWidth = backgrondIndicatorStrokeWidth
                 )
             }
