@@ -20,11 +20,11 @@ import androidx.compose.runtime.*
 fun CustomComponent(
     canvasSize: Dp = 300.dp,
     indicationValue: Int = 0,
-    maxIndicationValue: Int = 100,
+    maxIndicationValue: Int = 1000,
     backgroundIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.1f),
     backgrondIndicatorStrokeWidth: Float = 100f,
     foregroundIndicatorColor: Color = MaterialTheme.colors.primary,
-    foregroundIndicatorStrokeWidht: Float = 100f
+    foregroundIndicatorStrokeWidth: Float = 100f
 ){
 
     var allowedIndicatorValue by remember {
@@ -63,7 +63,7 @@ fun CustomComponent(
                     sweepAngle = sweepAngle,
                     componentSize = componentSize,
                     indicatorColor = foregroundIndicatorColor,
-                    indicatorStrokeWidth = backgrondIndicatorStrokeWidth
+                    indicatorStrokeWidth = foregroundIndicatorStrokeWidth
                 )
             }
     ) {
