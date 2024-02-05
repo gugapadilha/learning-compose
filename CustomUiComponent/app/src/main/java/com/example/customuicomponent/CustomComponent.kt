@@ -26,9 +26,20 @@ fun CustomComponent(
     foregroundIndicatorColor: Color = MaterialTheme.colors.primary,
     foregroundIndicatorStrokeWidht: Float = 100f
 ){
+
+    var allowedIndicatorValue by remember {
+        mutableStateOf(maxIndicationValue)
+    }
+
+    allowedIndicatorValue = if (indicationValue <= maxIndicationValue){
+        indicationValue
+    } else {
+        maxIndicationValue
+    }
+
     val animatedIndicatorValue = remember { Animatable(initialValue = 0f) }
-    LaunchedEffect(key1 = indicationValue){
-        animatedIndicatorValue.animateTo(indicationValue.toFloat())
+    LaunchedEffect(key1 = allowedIndicatorValue){
+        animatedIndicatorValue.animateTo(allowedIndicatorValue.toFloat())
     }
 
     val percentage = (animatedIndicatorValue.value / maxIndicationValue) * 100
