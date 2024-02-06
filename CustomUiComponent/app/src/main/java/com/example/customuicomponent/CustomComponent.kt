@@ -30,7 +30,8 @@ fun CustomComponent(
     foregroundIndicatorColor: Color = MaterialTheme.colors.primary,
     foregroundIndicatorStrokeWidth: Float = 100f,
     bigTextFontSize: TextUnit = MaterialTheme.typography.h3.fontSize,
-    bigTextColor: Color = MaterialTheme.colors.onSurface
+    bigTextColor: Color = MaterialTheme.colors.onSurface,
+    bigTextSuffix: String = "GB"
 ){
 
     var allowedIndicatorValue by remember {
@@ -147,7 +148,7 @@ fun EmbeddedElements(
         textAlign = TextAlign.Center
     )
     Text(
-        text = "$bigText ${bigTextSuffix.take(2)}",
+        text = "$bigText ${bigTextSuffix.take(2)}", //will take only the 2 first string characters
         color = bigTextColor,
         fontSize = smallTextFontSize,
         textAlign = TextAlign.Center,
