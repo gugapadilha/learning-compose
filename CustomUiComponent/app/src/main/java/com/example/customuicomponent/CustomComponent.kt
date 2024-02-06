@@ -26,17 +26,17 @@ import androidx.compose.ui.unit.TextUnit
 fun CustomComponent(
     canvasSize: Dp = 300.dp,
     indicationValue: Int = 0,
-    maxIndicationValue: Int = 1000,
+    maxIndicationValue: Int = 100,
     backgroundIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.1f),
     backgrondIndicatorStrokeWidth: Float = 100f,
     foregroundIndicatorColor: Color = MaterialTheme.colors.primary,
     foregroundIndicatorStrokeWidth: Float = 100f,
-    bigTextFontSize: TextUnit = MaterialTheme.typography.h3.fontSize,
+    bigTextFontSize: TextUnit = MaterialTheme.typography.h1.fontSize,
     bigTextColor: Color = MaterialTheme.colors.onSurface,
     bigTextSuffix: String = "GB",
     smallText: String = "Remaining",
-    smallTextFontSize: TextUnit = MaterialTheme.typography.h6.fontSize,
-    smallTextColor: Color = MaterialTheme.colors.onSurface.copy(alpha = -0.3f)
+    smallTextFontSize: TextUnit = MaterialTheme.typography.h5.fontSize,
+    smallTextColor: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.3f)
 ){
 
     var allowedIndicatorValue by remember {
