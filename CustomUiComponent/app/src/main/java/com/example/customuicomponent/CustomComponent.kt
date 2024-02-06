@@ -61,6 +61,8 @@ fun CustomComponent(
         animationSpec = tween(1000)
     )
 
+    val receivedValue by animateIntAsState(targetValue = allowedIndicatorValue, animationSpec = tween(1000))
+
     Column(
         modifier = Modifier
             .size(canvasSize)
@@ -82,7 +84,7 @@ fun CustomComponent(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
             EmbeddedElements(
-                bigText = allowedIndicatorValue,
+                bigText = receivedValue,
                 bigTextFontSize = bigTextFontSize,
                 bigTextColor = bigTextColor,
                 bigTextSuffix = bigTextSuffix ,
