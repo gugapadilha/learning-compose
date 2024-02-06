@@ -65,7 +65,7 @@ fun CustomComponent(
     val receivedValue by animateIntAsState(targetValue = allowedIndicatorValue, animationSpec = tween(1000))
 
     val animatedBigTextColor by animateColorAsState(targetValue = if (allowedIndicatorValue == 0)
-        MaterialTheme.colors.onSurface.copy(alpha = 0.3f) else bigTextColor)
+        MaterialTheme.colors.onSurface.copy(alpha = 0.3f) else bigTextColor, animationSpec = tween(1000))
     Column(
         modifier = Modifier
             .size(canvasSize)
