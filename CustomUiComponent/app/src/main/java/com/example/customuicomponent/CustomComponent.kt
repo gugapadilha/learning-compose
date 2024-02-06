@@ -14,7 +14,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.animation.core.*
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 
 @Composable
 fun CustomComponent(
@@ -24,7 +28,9 @@ fun CustomComponent(
     backgroundIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.1f),
     backgrondIndicatorStrokeWidth: Float = 100f,
     foregroundIndicatorColor: Color = MaterialTheme.colors.primary,
-    foregroundIndicatorStrokeWidth: Float = 100f
+    foregroundIndicatorStrokeWidth: Float = 100f,
+    bigTextFontSize: TextUnit = MaterialTheme.typography.h3.fontSize,
+    bigTextColor: Color = MaterialTheme.colors.onSurface
 ){
 
     var allowedIndicatorValue by remember {
@@ -37,12 +43,12 @@ fun CustomComponent(
         maxIndicationValue
     }
 
-    val animatedIndicatorValue = remember { Animatable(initialValue = 0f) }
+    var animatedIndicatorValue by remember { mutableStateOf(0f)}
     LaunchedEffect(key1 = allowedIndicatorValue){
-        animatedIndicatorValue.animateTo(allowedIndicatorValue.toFloat())
+        animatedIndicatorValue = (allowedIndicatorValue.toFloat())
     }
 
-    val percentage = (animatedIndicatorValue.value / maxIndicationValue) * 100
+    val percentage = (animatedIndicatorValue / maxIndicationValue) * 100
 
     val sweepAngle by animateFloatAsState(
         targetValue = (2.4 * percentage).toFloat(), //using 2.4 cause of 240 that we are using to do de max angle
@@ -67,7 +73,15 @@ fun CustomComponent(
                 )
             }
     ) {
-
+            EmbeddedElements(
+                bigText = ,
+                bigTextFontSize = ,
+                bigTextColor = ,
+                bigTextSuffix = ,
+                smallText = ,
+                smallTextColor = ,
+                smallTextFontSize =
+            )
     }
 }
 
@@ -113,6 +127,31 @@ fun DrawScope.foregroundIndicatior(
             x = (size.width - componentSize.width) / 2f ,
             y = (size.height - componentSize.height) / 2f ,
         )
+    )
+}
+
+@Composable
+fun EmbeddedElements(
+    bigText: Int,
+    bigTextFontSize: TextUnit,
+    bigTextColor: Color,
+    bigTextSuffix: String,
+    smallText: String,
+    smallTextColor: Color,
+    smallTextFontSize: TextUnit
+){
+    Text(
+        text = smallText,
+        color = smallTextColor,
+        fontSize = smallTextFontSize,
+        textAlign = TextAlign.Center
+    )
+    Text(
+        text = "$bigText ${bigTextSuffix.take(2)}",
+        color = bigTextColor,
+        fontSize = smallTextFontSize,
+        textAlign = TextAlign.Center,
+        fontWeight = FontWeight.Bold
     )
 }
 
