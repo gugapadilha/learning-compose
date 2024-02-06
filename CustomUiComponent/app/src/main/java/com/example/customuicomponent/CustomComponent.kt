@@ -31,7 +31,10 @@ fun CustomComponent(
     foregroundIndicatorStrokeWidth: Float = 100f,
     bigTextFontSize: TextUnit = MaterialTheme.typography.h3.fontSize,
     bigTextColor: Color = MaterialTheme.colors.onSurface,
-    bigTextSuffix: String = "GB"
+    bigTextSuffix: String = "GB",
+    smallText: String = "Remaining",
+    smallTextFontSize: TextUnit = MaterialTheme.typography.h6.fontSize,
+    smallTextColor: Color = MaterialTheme.colors.onSurface.copy(alpha = -0.3f)
 ){
 
     var allowedIndicatorValue by remember {
