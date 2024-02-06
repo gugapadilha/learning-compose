@@ -1,5 +1,6 @@
 package com.example.customuicomponent
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.geometry.*
 import androidx.compose.foundation.layout.Column
@@ -63,6 +64,8 @@ fun CustomComponent(
 
     val receivedValue by animateIntAsState(targetValue = allowedIndicatorValue, animationSpec = tween(1000))
 
+    val animatedBigTextColor by animateColorAsState(targetValue = if (allowedIndicatorValue == 0)
+        MaterialTheme.colors.onSurface.copy(alpha = 0.3f) else bigTextColor)
     Column(
         modifier = Modifier
             .size(canvasSize)
@@ -86,7 +89,7 @@ fun CustomComponent(
             EmbeddedElements(
                 bigText = receivedValue,
                 bigTextFontSize = bigTextFontSize,
-                bigTextColor = bigTextColor,
+                bigTextColor = animatedBigTextColor,
                 bigTextSuffix = bigTextSuffix ,
                 smallText = smallText ,
                 smallTextColor = smallTextColor,
