@@ -23,6 +23,7 @@ class MainActivity : ComponentActivity() {
             NavigationComposeTheme {
 
                 navController = rememberNavController()
+                setupNavGraph(navController = navController)
 
             }
         }
