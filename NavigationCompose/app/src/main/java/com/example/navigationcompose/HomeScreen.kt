@@ -24,7 +24,7 @@ fun HomeScreen(
     ) {
         Text(
             modifier = Modifier.clickable{
-              navController.navigate(route = Screen.Detail.passId(5)) //navigating to screen and passing id value throught single required argument func
+              navController.navigate(route = Screen.Detail.passNameAndId(id = 5, name ="Guga")) //navigating to screen and passing parameters regarding Detail's fun
             },
             text = "Home",
             color = MaterialTheme.colors.primary,
