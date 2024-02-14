@@ -23,7 +23,7 @@ fun HomeScreen(
         contentAlignment = Alignment.Center
     ) {
         Text(
-            modifier = Modifier.clickable{
+            modifier = Modifier.clickable{ //if i want to rewrite new id and username, i just can passed here in this passedNameAndId function!
               navController.navigate(route = Screen.Detail.passedNameAndId()) //navigating to screen and passing parameters regarding Detail's fun
             },
             text = "Home",
