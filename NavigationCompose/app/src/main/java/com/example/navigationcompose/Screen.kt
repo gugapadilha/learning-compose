@@ -6,6 +6,14 @@ sealed class Screen( //by default every constructor will be private (doesnt allo
     val route: String
 ) {
     object Home: Screen(route = "home_screen")
+    object Detail : Screen(route = "detail_screen?id={id}"){
+        fun passId(id: Int = 0) : String {
+            return "detail_screen?id=$id"
+        }
+    }
+}
+
+    /* $$$$$$$$$ SINGLE/MULTIPLE REQUIRED ARGUMENT $$$$$$$$$
     object Detail: Screen(route = "detail_screen/{$DETAIL_ARGUMENT_KEY}/{$DETAIL_ARGUMENT_KEY2}"){
 //        fun passId(id: Int) : String { //passing Single Required Argument function to HomeScreen
 //            return "detail_screen/$id" //simply returning the name of the rout and a simple id
@@ -18,3 +26,5 @@ sealed class Screen( //by default every constructor will be private (doesnt allo
         }
     }
 }
+*/
+
