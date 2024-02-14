@@ -28,9 +28,10 @@ fun setupNavGraph(
                     type = NavType.IntType
                     defaultValue = 0 //Single Option Argument (VERY IMPORTANT TO SET A DEFAULT VALUE)
                 },
-//                navArgument(DETAIL_ARGUMENT_KEY2) {
-//                    type = NavType.StringType
-//                }
+                navArgument(DETAIL_ARGUMENT_KEY2) {
+                    type = NavType.StringType
+                    defaultValue = "XDXDXD" //If doesnt have any value, will be printed this default value
+                }
             )
         ) {
             Log.d("Args", it.arguments?.getInt(DETAIL_ARGUMENT_KEY).toString())

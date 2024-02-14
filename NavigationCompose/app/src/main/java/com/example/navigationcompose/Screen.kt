@@ -6,9 +6,15 @@ sealed class Screen( //by default every constructor will be private (doesnt allo
     val route: String
 ) {
     object Home: Screen(route = "home_screen")
-    object Detail : Screen(route = "detail_screen?id={id}"){
-        fun passId(id: Int = 0) : String {
-            return "detail_screen?id=$id"
+    object Detail : Screen(route = "detail_screen?id={id}&name={name}"){
+//        fun passId(id: Int = 0) : String {
+//            return "detail_screen?id=$id"
+//        }
+        fun passedNameAndId( //Multiple Optional Arguments
+            id: Int = 0,
+            name: String = "Guga"
+        ) : String {
+            return "detail_screen?id=$id&name=$name" //setting both id and name in this function that we put in the route
         }
     }
 }
