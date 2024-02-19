@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -55,8 +57,12 @@ fun RowScope.AddItem(
         selected = currentDestination?.hierarchy?.any{
             it.route == screen.route
         } == true,
+        unselectedContentColor = LocalContentColor.current.copy(alpha = ContentAlpha.disabled),
         onClick = {
-            navController.navigate(screen.route)
+            navController.navigate(screen.route) {
+                popUpTo(navController.graph.findStartDestination().id) //prevent that when click back butto always goes back to HOME
+                launchSingleTop = true //remove uncessesary code of the same destination
+            }
         }
     )
 }
