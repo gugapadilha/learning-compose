@@ -121,6 +121,10 @@ fun SearchAppBar(
                 onSearch = {
                     onSearchClicked(text) //when we click search in software keyboar, we wanna take the text of our textfiel and pass to the lambda
                 }
+            ),
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.Transparent,
+                cursorColor = Color.White.copy(alpha = ContentAlpha.medium)
             )
         )
     }
