@@ -119,7 +119,7 @@ fun SearchAppBar(
             ),
             keyboardActions = KeyboardActions(
                 onSearch = {
-                    onSearchClicked(text)
+                    onSearchClicked(text) //when we click search in software keyboar, we wanna take the text of our textfiel and pass to the lambda
                 }
             )
         )
@@ -131,4 +131,14 @@ fun SearchAppBar(
 @Preview
 fun DefaultAppBarPreview() {
     DefaultAppBar(onSearchClicked = {})
+}
+
+@Composable
+@Preview
+fun SearchAppBarPreview() {
+    SearchAppBar(
+        text = "Random Text",
+        onTextChange = {} ,
+        onCloseClicked = { /*TODO*/ },
+        onSearchClicked = {} )
 }
