@@ -1,6 +1,7 @@
 package com.example.searchwidgetbar
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardActions
@@ -28,12 +29,53 @@ fun MainScreen(mainViewModel: MainViewModel) {
 
     Scaffold(
         topBar = {
-            DefaultAppBar(
-                onSearchClicked = {}
+            MainAppBar(
+                searchWidgetState = searchWidgetState,
+                searchTextState = searchTextState,
+                onTextChange = {
+                    mainViewModel.updateSearchTextState(newValue = it)
+                },
+                onCloseClicked = {
+                    mainViewModel.updateSearchTextState(newValue = "")
+                    mainViewModel.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
+                },
+                onSearchClicked = {
+                    Log.d("Searched Text", it)
+                },
+                onSearchTriggered = {
+                    mainViewModel.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
+                }
             )
         }
     ) {}
 }
+
+@Composable
+fun MainAppBar(
+    searchWidgetState: SearchWidgetState,
+    searchTextState: String,
+    onTextChange: (String) -> Unit,
+    onCloseClicked: () -> Unit,
+    onSearchClicked: (String) -> Unit,
+    onSearchTriggered: () -> Unit
+) {
+    when (searchWidgetState) {
+        SearchWidgetState.CLOSED -> {
+            DefaultAppBar(
+                onSearchClicked = onSearchTriggered
+            )
+        }
+        SearchWidgetState.OPENED -> {
+            SearchAppBar(
+                text = searchTextState,
+                onTextChange = onTextChange,
+                onCloseClicked = onCloseClicked,
+                onSearchClicked = onSearchClicked
+            )
+        }
+    }
+}
+
 
 @Composable
 fun DefaultAppBar(onSearchClicked: () -> Unit) {
@@ -105,9 +147,9 @@ fun SearchAppBar(
             trailingIcon = {
                 IconButton(
                     onClick = {
-                        if (text.isNotEmpty()){
+                        if (text.isNotEmpty()) {
                             onTextChange("")
-                        }else{
+                        } else {
                             onCloseClicked()
                         }
                     }
@@ -147,7 +189,7 @@ fun DefaultAppBarPreview() {
 fun SearchAppBarPreview() {
     SearchAppBar(
         text = "Random Text",
-        onTextChange = {} ,
+        onTextChange = {},
         onCloseClicked = { /*TODO*/ },
-        onSearchClicked = {} )
+        onSearchClicked = {})
 }
