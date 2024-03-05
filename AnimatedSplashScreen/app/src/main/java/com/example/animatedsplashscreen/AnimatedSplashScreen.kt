@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -67,10 +68,35 @@ fun Splash(alpha : Float) {
     }
 }
 
+@Composable
+fun HomeScreen(alpha : Float) {
+    Box(
+        modifier = Modifier
+            .background(if (isSystemInDarkTheme()) Color.Black else PurpleGrey80)
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    )
+    {
+        Icon(
+            modifier = Modifier.size(120.dp)
+                .alpha(alpha = alpha),
+            imageVector = Icons.Default.Home,
+            contentDescription = "Logo Icon",
+            tint = Color.White
+        )
+    }
+}
+
 @Preview
 @Composable
 fun SplashScreenPreview() {
     Splash(alpha = 1f)
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+    HomeScreen(alpha = 1f)
 }
 
 @Preview(uiMode = UI_MODE_NIGHT_YES)
