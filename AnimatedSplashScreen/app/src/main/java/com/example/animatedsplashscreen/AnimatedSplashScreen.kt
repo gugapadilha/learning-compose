@@ -1,5 +1,7 @@
 package com.example.animatedsplashscreen
 
+import android.content.res.Configuration
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -12,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.animatedsplashscreen.ui.theme.Purple80
 import com.example.animatedsplashscreen.ui.theme.PurpleGrey80
@@ -25,8 +28,8 @@ fun AnimatedSplashScreen() {
 fun Splash() {
     Box(
         modifier = Modifier
-        .background(if (isSystemInDarkTheme()) Color.Black else PurpleGrey80)
-        .fillMaxSize(),
+            .background(if (isSystemInDarkTheme()) Color.Black else PurpleGrey80)
+            .fillMaxSize(),
         contentAlignment = Alignment.Center
     )
     {
@@ -37,4 +40,16 @@ fun Splash() {
             tint = Color.White
         )
     }
+}
+
+@Preview
+@Composable
+fun SplashScreenPreview() {
+    Splash()
+}
+
+@Preview(uiMode = UI_MODE_NIGHT_YES)
+@Composable
+fun SplashScreenDarkPreview() {
+    Splash()
 }
