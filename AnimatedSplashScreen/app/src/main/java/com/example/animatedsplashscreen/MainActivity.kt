@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.example.animatedsplashscreen.navigation.SetupNavGraph
 import com.example.animatedsplashscreen.ui.theme.AnimatedSplashScreenTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AnimatedSplashScreenTheme {
                 val navController = rememberNavController()
+                SetupNavGraph(navController = navController)
             }
         }
     }
