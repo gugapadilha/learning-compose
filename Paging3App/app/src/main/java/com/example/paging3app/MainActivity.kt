@@ -17,6 +17,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Paging3AppTheme {
+                Text(text = "Hello Guga!")
             }
         }
     }
