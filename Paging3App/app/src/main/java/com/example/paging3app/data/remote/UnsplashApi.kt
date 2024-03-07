@@ -13,4 +13,11 @@ interface UnsplashApi {
         @Query("page") page: Int, //Paging3 Lib will handle this page by itself
         @Query("per_page")per_page_: Int
     ) : List<UnsplashImage>
+
+    @Headers("Authorization: Client-ID jcsfM8MCelC3qj29L7CQJFFmJKz6mzI1Hjhd-GVliec")
+    @GET("/search/photos")
+    suspend fun searchImages(
+        @Query("page") page: Int, //Paging3 Lib will handle this page by itself
+        @Query("per_page")per_page_: Int
+    ) : List<UnsplashImage>
 }
