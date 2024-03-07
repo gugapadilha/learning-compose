@@ -2,4 +2,5 @@
 <resources>
 
     <style name="Theme.Paging3App" parent="android:Theme.Material.Light.NoActionBar" />
+
 </resources>
