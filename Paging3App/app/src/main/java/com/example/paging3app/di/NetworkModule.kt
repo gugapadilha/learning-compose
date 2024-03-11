@@ -1,5 +1,6 @@
 package com.example.paging3app.di
 
+import com.example.paging3app.data.remote.UnsplashApi
 import com.example.paging3app.util.Constants.BASE_URL
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
@@ -29,6 +30,9 @@ object NetworkModule {
 
     }
 
+    //Providing a instance of my retrofit
+    @Provides
+    @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val contentType = "application/json".toMediaType()
         val json = Json {
@@ -40,5 +44,10 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(json.asConverterFactory(contentType))
             .build()
+    }
+
+    //Providing a instance of the API
+    fun provideUnsplashApi(retrofit: Retrofit): UnsplashApi {
+        return retrofit.create(UnsplashApi::class.java)
     }
 }
