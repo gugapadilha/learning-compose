@@ -50,7 +50,7 @@ class UnsplashRemoteMediator(
                 }
             }
 
-            val response = unsplashApi.getAllImages(page = currentPage, per_page_ = 10)
+            val response = unsplashApi.getAllImages(page = currentPage, perPage = 10)
             val endOfPaginationReached = response.isEmpty()
 
             val prevPage = if (currentPage == 1) null else currentPage - 1
