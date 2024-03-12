@@ -50,7 +50,7 @@ class UnsplashRemoteMediator(
                 }
             }
 
-            val response = unsplashApi.getAllImages(page = currentPage, perPage = 10)
+            val response = unsplashApi.getAllImages(page = currentPage, perPage = 10) //10 different images per page
             val endOfPaginationReached = response.isEmpty()
 
             val prevPage = if (currentPage == 1) null else currentPage - 1
@@ -69,7 +69,7 @@ class UnsplashRemoteMediator(
                     )
                 }
                 unsplashRemoteKeysDao.addAllRemoteKeys(remoteKeys = keys)
-                unsplashImageDao.addImages(images = response)
+                unsplashImageDao.addImages(images = response) //whenever we scroll to the end (10 images) the Paging3 lib will trigger a remote mediator to load more data and request a new page
             }
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (e: Exception) {
