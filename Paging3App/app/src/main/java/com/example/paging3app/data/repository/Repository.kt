@@ -10,7 +10,4 @@ import javax.inject.Inject
 class Repository @Inject constructor(
     private val unsplashApi: UnsplashApi,
     private val unsplashDatabase: UnsplashDatabase
-) {
-
-
-}
+)
