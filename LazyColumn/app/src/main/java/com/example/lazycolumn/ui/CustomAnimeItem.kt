@@ -101,5 +101,4 @@ fun CustomAnimeItem(anime: Anime, position: Int){
 @Preview
 fun CustomAnimePreview(){
     AnimeListScreen()
-
 }
