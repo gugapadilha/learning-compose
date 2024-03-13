@@ -22,6 +22,7 @@ import com.example.lazycolumn.ui.AnimeListScreen
 import com.example.lazycolumn.ui.CustomAnimeItem
 import com.example.lazycolumn.ui.CustomItem
 import com.example.lazycolumn.ui.CustomItem2
+import com.example.lazycolumn.ui.CustomItemListAnimation
 import com.example.lazycolumn.ui.theme.LazyColumnTheme
 import java.lang.reflect.Modifier
 
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LazyColumnTheme {
+                //CustomItemListAnimation()
                 AnimeListScreen()
             }
         }
