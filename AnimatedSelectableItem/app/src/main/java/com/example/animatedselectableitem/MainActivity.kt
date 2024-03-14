@@ -5,7 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -41,6 +43,15 @@ class MainActivity : ComponentActivity() {
                         title = "Lorem Ipsum",
                         onClick = {
                             selected = !selected //act like and ON and OFF switch
+                        }
+                    )
+                    Spacer(modifier = Modifier.height(12.dp))
+                    SelectableItem(
+                        selected = selected2,
+                        title = "Lorem Ipsum",
+                        subtitle = "Lorem Ipsum dolor sit amet, sonsectur adispicing elit, sed to eusmod the alicia same desu ka, daijobu desu datebayo",
+                        onClick = {
+                            selected2 = !selected2 //act like and ON and OFF switch
                         }
                     )
                 }
