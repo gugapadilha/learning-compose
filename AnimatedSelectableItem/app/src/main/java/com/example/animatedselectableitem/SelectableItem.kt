@@ -1,5 +1,9 @@
 package com.example.animatedselectableitem
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -13,9 +17,12 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -25,6 +32,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 
 @Composable
 fun SelectableItem(
@@ -47,9 +55,48 @@ fun SelectableItem(
     onClick: () -> Unit
 ) {
 
+    val scaleA = remember{ Animatable(initialValue = 1f) }
+    val scaleB = remember{ Animatable(initialValue = 1f) }
+
+    LaunchedEffect(key1 = selected) {
+        if (selected){
+            launch {
+                scaleA.animateTo(
+                    targetValue = 0.3f, //check icon color changes
+                    animationSpec = tween(
+                        durationMillis = 50
+                    )
+                )
+                scaleA.animateTo(
+                    targetValue = 1f,
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioLowBouncy, //check icon bounce
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
+            }
+            launch {
+                scaleB.animateTo(
+                    targetValue = 0.9f, //column color changes
+                    animationSpec = tween(
+                        durationMillis = 50
+                    )
+                )
+                scaleB.animateTo(
+                    targetValue = 1f,
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioLowBouncy, //column bounce
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
+            }
+        }
+    }
+
     Column(
         modifier =
         Modifier
+            .scale(scaleB.value)
             .border(
                 width = borderWidth,
                 color = borderColor,
@@ -77,7 +124,9 @@ fun SelectableItem(
                 overflow = TextOverflow.Ellipsis
             )
             IconButton(
-                modifier = Modifier.weight(2f),
+                modifier = Modifier
+                    .scale(scaleA.value)
+                    .weight(2f),
                 onClick = onClick
             ) {
                 Icon(
