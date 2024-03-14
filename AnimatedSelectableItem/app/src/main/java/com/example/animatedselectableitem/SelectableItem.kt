@@ -85,5 +85,18 @@ fun SelectableItem(
                 )
             }
         }
+        if (subtitle != null) {
+            Text(
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .padding(bottom = 12.dp),
+                text = subtitle,
+                style = TextStyle(
+                    color = subtitleColor
+                ),
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis
+            )
+        }
     }
 }
