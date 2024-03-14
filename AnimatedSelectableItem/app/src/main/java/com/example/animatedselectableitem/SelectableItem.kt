@@ -102,7 +102,7 @@ fun SelectableItem(
                 color = borderColor,
                 shape = borderShape
             )
-            .clip(borderShape) //used to not exced the border of components
+            .clip(borderShape) //used to not exceed the border of components
             .clickable {
                 onClick()
             }
@@ -113,7 +113,7 @@ fun SelectableItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                modifier = Modifier.weight(8f),
+                modifier = Modifier.weight(8f), //will occupy 80% of this space
                 text = title,
                 style = TextStyle(
                     color = titleColor,
@@ -126,7 +126,7 @@ fun SelectableItem(
             IconButton(
                 modifier = Modifier
                     .scale(scaleA.value)
-                    .weight(2f),
+                    .weight(2f), //will occupy 20% of this space
                 onClick = onClick
             ) {
                 Icon(
