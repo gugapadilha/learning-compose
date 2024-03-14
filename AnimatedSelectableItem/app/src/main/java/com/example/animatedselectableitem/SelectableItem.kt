@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -54,6 +55,7 @@ fun SelectableItem(
                 color = borderColor,
                 shape = borderShape
             )
+            .clip(borderShape) //used to not exced the border of components
             .clickable {
                 onClick()
             }
