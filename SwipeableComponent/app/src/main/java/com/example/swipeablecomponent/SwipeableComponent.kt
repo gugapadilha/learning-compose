@@ -54,9 +54,13 @@ fun SwipeableComponent() {
                 tint = Color.White
             )
         },
-        background = Color.Green
+        background = Color.Blue
     )
-    SwipeableActionsBox(startActions = listOf(archive)) {
+
+    SwipeableActionsBox(
+        startActions = listOf(archive),
+        endActions = listOf(email),
+        swipeThreshold = 50.dp,) {
         Row(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.surface)
@@ -84,8 +88,6 @@ fun SwipeableComponent() {
 
         }
     }
-
-
 }
 
 @Preview
