@@ -33,6 +33,7 @@ fun SwipeableComponent() {
         },
         icon = {
             Icon(
+                modifier = Modifier.padding(16.dp),
                 painter = painterResource(id = R.drawable.baseline_archive_24),
                 contentDescription = null,
                 tint = Color.White
@@ -47,6 +48,7 @@ fun SwipeableComponent() {
         },
         icon = {
             Icon(
+                modifier = Modifier.padding(16.dp),
                 painter = painterResource(id = R.drawable.baseline_email_24),
                 contentDescription = null,
                 tint = Color.White
@@ -54,37 +56,36 @@ fun SwipeableComponent() {
         },
         background = Color.Green
     )
-
-    SwipeableActionsBox() {
-
-    }
-
-    Row(
-        modifier = Modifier
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 16.dp)
-            .padding(vertical = 8.dp)
-    ) {
-        Box(
+    SwipeableActionsBox(startActions = listOf(archive)) {
+        Row(
             modifier = Modifier
-                .clip(RoundedCornerShape(size = 50.dp))
-                .background(MaterialTheme.colorScheme.primary)
-                .size(50.dp)
+                .background(MaterialTheme.colorScheme.surface)
+                .padding(horizontal = 16.dp)
+                .padding(vertical = 8.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(size = 50.dp))
+                    .background(MaterialTheme.colorScheme.primary)
+                    .size(50.dp)
 
-        )
-        Spacer(modifier = Modifier.width(16.dp))
-        Column(
-            modifier = Modifier.weight(7f)) {
-            Text(
-                text = "Title", style = TextStyle(
-                    fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                    fontWeight = FontWeight.Bold
-                )
             )
-            Text(text = "Some random text.")
-        }
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(
+                modifier = Modifier.weight(7f)) {
+                Text(
+                    text = "Title", style = TextStyle(
+                        fontSize = MaterialTheme.typography.titleLarge.fontSize,
+                        fontWeight = FontWeight.Bold
+                    )
+                )
+                Text(text = "Some random text.")
+            }
 
+        }
     }
+
+
 }
 
 @Preview
