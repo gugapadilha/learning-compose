@@ -58,9 +58,9 @@ fun SwipeableComponent() {
     )
 
     SwipeableActionsBox(
+        swipeThreshold = 10.dp,
         startActions = listOf(archive),
-        endActions = listOf(email),
-        swipeThreshold = 50.dp,) {
+        endActions = listOf(email)) {
         Row(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.surface)
