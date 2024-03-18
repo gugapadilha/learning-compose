@@ -78,12 +78,12 @@ fun SwipeableComponent() {
             Column(
                 modifier = Modifier.weight(7f)) {
                 Text(
-                    text = "Title", style = TextStyle(
+                    text = "Guga", style = TextStyle(
                         fontSize = MaterialTheme.typography.titleLarge.fontSize,
                         fontWeight = FontWeight.Bold
                     )
                 )
-                Text(text = "Some random text.")
+                Text(text = "Native Android Developer")
             }
 
         }
