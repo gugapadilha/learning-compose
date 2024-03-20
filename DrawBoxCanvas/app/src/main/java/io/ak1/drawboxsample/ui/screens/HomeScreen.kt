@@ -112,15 +112,3 @@ fun HomeScreen(save: (Bitmap) -> Unit) {
 
     }
 }
-/*
-    var path: String = ""
-    val json = GsonBuilder().create()
-    if(path.isNotBlank()){
-       val listOfMyClassObject = object : TypeToken<ArrayList<PathWrapper>>() {}.type
-       drawController.importPath(json.fromJson(path,listOfMyClassObject))
-       path = ""
-    }else{
-       path = json.toJson(drawController.exportPath())
-       Log.e("to string","${path}")
-    }
-*/
