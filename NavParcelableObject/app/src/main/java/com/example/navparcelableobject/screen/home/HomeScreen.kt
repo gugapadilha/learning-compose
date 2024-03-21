@@ -13,6 +13,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.navparcelableobject.Screen
+import com.example.navparcelableobject.data.Person
 
 @Composable
 fun HomeScreen(
@@ -21,7 +23,14 @@ fun HomeScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .clickable {},
+            .clickable {
+                val person = Person("John", "Doe")
+                navController.currentBackStackEntry?.savedStateHandle?.set(
+                    key = "person",
+                    value = person
+                )
+                navController.navigate(Screen.Details.route)
+            },
         contentAlignment = Alignment.Center
     ) {
         Text(
