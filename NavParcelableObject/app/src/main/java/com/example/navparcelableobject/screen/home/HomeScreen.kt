@@ -29,6 +29,7 @@ fun HomeScreen(
                     key = "person",
                     value = person
                 )
+                //navController.popBackStack() WE navigate and remove our detail screen from the backstack
                 navController.navigate(Screen.Details.route)
             },
         contentAlignment = Alignment.Center
@@ -36,7 +37,7 @@ fun HomeScreen(
         Text(
             text = "Home",
             style = TextStyle(
-                fontSize = MaterialTheme.typography.bodyLarge.fontSize,
+                fontSize = MaterialTheme.typography.displayLarge.fontSize,
                 fontWeight = FontWeight.Bold
             )
         )

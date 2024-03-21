@@ -27,7 +27,7 @@ fun DetailScreen(
         Text(
             text = "Detail",
             style = TextStyle(
-                fontSize = MaterialTheme.typography.bodyLarge.fontSize,
+                fontSize = MaterialTheme.typography.displayLarge.fontSize,
                 fontWeight = FontWeight.Bold
             )
         )
