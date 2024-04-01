@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.navparcelableobject.Screen
@@ -45,5 +46,6 @@ fun DetailScreen(
 @Composable
 fun DetailScreenPreview() {
     val navController = rememberNavController()
-    DetailScreen(navController = navController)
+    val sharedViewModel = SharedViewModel()
+    DetailScreen(navController = navController, sharedViewModel)
 }

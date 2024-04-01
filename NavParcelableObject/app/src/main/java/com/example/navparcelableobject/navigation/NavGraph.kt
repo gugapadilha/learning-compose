@@ -32,7 +32,7 @@ fun SetupNavGraph(navController: NavHostController) {
                 Log.d("DetailScreen", "${result?.firstName}")
                 Log.d("DetailScreen", "${result?.lastName}")
             }
-            DetailScreen(navController = navController)
+            DetailScreen(navController = navController, sharedViewModel = sharedViewModel)
         }
     }
 
