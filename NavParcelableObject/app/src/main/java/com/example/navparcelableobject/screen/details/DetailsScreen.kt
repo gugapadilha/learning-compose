@@ -13,6 +13,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.navparcelableobject.Screen
+import com.example.navparcelableobject.data.Person
 
 @Composable
 fun DetailScreen(
@@ -21,7 +23,15 @@ fun DetailScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .clickable {},
+            .clickable {
+                val person = Person("John", "Doe")
+                navController.currentBackStackEntry?.savedStateHandle?.set(
+                    key = "person",
+                    value = person
+                )
+                //navController.popBackStack() //WE navigate and remove our detail screen from the backstack
+                navController.navigate(Screen.Home.route)
+            },
         contentAlignment = Alignment.Center
     ) {
         Text(
