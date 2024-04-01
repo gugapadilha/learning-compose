@@ -3,8 +3,8 @@ package com.example.navparcelableobject.screen
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.core.app.Person
 import androidx.lifecycle.ViewModel
+import com.example.navparcelableobject.data.Person
 
 class SharedViewModel : ViewModel() {
 
