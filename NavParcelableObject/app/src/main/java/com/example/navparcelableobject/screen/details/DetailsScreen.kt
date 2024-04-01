@@ -15,21 +15,18 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.navparcelableobject.Screen
 import com.example.navparcelableobject.data.Person
+import com.example.navparcelableobject.screen.SharedViewModel
 
 @Composable
 fun DetailScreen(
-    navController: NavHostController
+    navController: NavHostController,
+    sharedViewModel: SharedViewModel
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .clickable {
-                val person = Person("John", "Doe")
-                navController.currentBackStackEntry?.savedStateHandle?.set(
-                    key = "person",
-                    value = person
-                )
-                //navController.popBackStack() //WE navigate and remove our detail screen from the backstack
+
                 navController.navigate(Screen.Home.route)
             },
         contentAlignment = Alignment.Center
