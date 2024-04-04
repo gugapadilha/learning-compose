@@ -61,7 +61,7 @@ fun CustomCard(data: CustomData) {
                 .weight(1.5f)
                 .padding(vertical = 12.dp)
         ) {
-            AdaptiveContent(data = data)
+            AdaptiveContent(data = data) //the only thing that doesn't are inside this is the images
         }
     }
 }
