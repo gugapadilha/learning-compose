@@ -76,7 +76,7 @@ fun AdaptableItem(data: CustomData, windowSize: WindowSize) {
 @Composable
 fun RowScope.RowContent(
     data: CustomData,
-    windowSize: WindowSize,
+    windowSize: WindowSize, //used to see which device we are using and doing logic for each one
     maxLines: Int
 ) {
     val showIcons by remember(key1 = windowSize) {
