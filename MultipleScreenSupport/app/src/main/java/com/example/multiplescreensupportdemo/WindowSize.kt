@@ -12,6 +12,7 @@ data class WindowSize(
 )
 
 //Compact will be use to our devices in a portrait mode
+//Medium will be user to our devices as well but in a landscape mode(have more width)
 enum class WindowType { Compact, Medium, Expanded }
 
 @Composable
