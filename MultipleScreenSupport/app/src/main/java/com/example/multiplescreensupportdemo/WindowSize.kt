@@ -11,6 +11,7 @@ data class WindowSize(
     val height: WindowType
 )
 
+//Compact will be use to our devices in a portrait mode
 enum class WindowType { Compact, Medium, Expanded }
 
 @Composable
