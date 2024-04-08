@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MultipleScreenSupportDemoTheme {
-                val window = rememberWindowSize()
+                val window = rememberWindowSize() //can access the objects to see whats the width we will pass
                 val navController = rememberNavController()
                 SetupNavGraph(windowSize = window, navController = navController)
             }
