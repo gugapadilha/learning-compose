@@ -14,7 +14,7 @@ fun RequestMultiplePermissions(
     deniedMessage: String = "Give this app a permission to proceed. If it doesn't work, then you'll have to do it manually from the settings.",
     rationaleMessage: String = "To use this app's functionalities, you need to give us the permission.",
 ) {
-    val multiplePermissionsState = rememberMultiplePermissionsState(permissions)
+    val multiplePermissionsState = rememberMultiplePermissionsState(permissions)//using rememberMultiplePermissionState to remember Contact and Camera
 
     HandleRequests(
         multiplePermissionsState = multiplePermissionsState,
