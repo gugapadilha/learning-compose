@@ -21,7 +21,7 @@ fun RequestPermission(
     deniedMessage: String = "Give this app a permission to proceed. If it doesn't work, then you'll have to do it manually from the settings.",
     rationaleMessage: String = "To use this app's functionalities, you need to give us the permission.",
 ) {
-    val permissionState = rememberPermissionState(permission)
+    val permissionState = rememberPermissionState(permission) //using rememberPermissionState cause its only one permission
 
     HandleRequest(
         permissionState = permissionState,
