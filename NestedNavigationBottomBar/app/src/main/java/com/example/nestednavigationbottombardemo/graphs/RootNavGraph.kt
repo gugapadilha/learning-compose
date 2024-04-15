@@ -15,6 +15,7 @@ fun RootNavigationGraph(navController: NavHostController) {
     ) {
         authNavGraph(navController = navController)
         composable(route = Graph.HOME) {
+            //Home Screen is the on who have other screen to access inside of it(as Profile and Settings)
             HomeScreen()
         }
     }
