@@ -19,6 +19,7 @@ fun HomeNavGraph(navController: NavHostController) {
         composable(route = BottomBarScreen.Home.route) {
             ScreenContent(
                 name = BottomBarScreen.Home.route,
+                //onClick to access two other screens inside
                 onClick = {
                     navController.navigate(Graph.DETAILS)
                 }
