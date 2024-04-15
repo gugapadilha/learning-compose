@@ -12,6 +12,7 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
         route = Graph.AUTHENTICATION,
         startDestination = AuthScreen.Login.route
     ) {
+        //Login is the only one who have multiple screens inside of it
         composable(route = AuthScreen.Login.route) {
             LoginContent(
                 onClick = {
