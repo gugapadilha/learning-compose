@@ -63,6 +63,7 @@ fun NavGraphBuilder.detailsNavGraph(navController: NavHostController) {
     }
 }
 
+//sealed class to access 2 more screens inside HOME
 sealed class DetailsScreen(val route: String) {
     object Information : DetailsScreen(route = "INFORMATION")
     object Overview : DetailsScreen(route = "OVERVIEW")
