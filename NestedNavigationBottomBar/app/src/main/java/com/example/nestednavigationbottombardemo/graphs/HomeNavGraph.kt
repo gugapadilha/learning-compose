@@ -41,7 +41,7 @@ fun HomeNavGraph(navController: NavHostController) {
 }
 
 
-
+//Accessing two routes of destination through HOME
 fun NavGraphBuilder.detailsNavGraph(navController: NavHostController) {
     navigation(
         route = Graph.DETAILS,
