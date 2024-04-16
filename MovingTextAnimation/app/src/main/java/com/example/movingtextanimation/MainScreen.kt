@@ -60,7 +60,7 @@ fun MainScreen(
 fun addAnimation(duration: Int = 800): ContentTransform{
     return slideInVertically(animationSpec = tween(durationMillis = duration)) { height -> height } + fadeIn(
         animationSpec = tween(durationMillis = duration)
-    )with slideOutVertically(animationSpec = tween(durationMillis = duration)) { height -> height } + fadeOut(
+    )with slideOutVertically(animationSpec = tween(durationMillis = duration)) { height -> -height } + fadeOut(
         animationSpec = tween(durationMillis = duration)
     )
 }
