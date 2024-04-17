@@ -54,6 +54,7 @@ object ServiceHelper {
         )
     }
 
+    //Trigger StopwatchService to deal with actions on screen and notifications
     fun triggerForegroundService(context: Context, action: String) {
         Intent(context, StopwatchService::class.java).apply {
             this.action = action
