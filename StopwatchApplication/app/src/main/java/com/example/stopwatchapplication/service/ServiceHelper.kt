@@ -8,15 +8,17 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import com.example.stopwatchapplication.MainActivity
 
 import com.example.stopwatchapplication.service.StopwatchService
+import com.example.stopwatchapplication.util.Constants.CANCEL_REQUEST_CODE
+import com.example.stopwatchapplication.util.Constants.CLICK_REQUEST_CODE
+import com.example.stopwatchapplication.util.Constants.RESUME_REQUEST_CODE
+import com.example.stopwatchapplication.util.Constants.STOPWATCH_STATE
+import com.example.stopwatchapplication.util.Constants.STOP_REQUEST_CODE
 
 @ExperimentalAnimationApi
 object ServiceHelper {
 
     private val flag =
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            PendingIntent.FLAG_IMMUTABLE
-        else
-            0
+        PendingIntent.FLAG_IMMUTABLE
 
     fun clickPendingIntent(context: Context): PendingIntent {
         val clickIntent = Intent(context, MainActivity::class.java).apply {
