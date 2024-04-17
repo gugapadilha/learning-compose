@@ -14,9 +14,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -99,8 +101,31 @@ fun MainScreen(stopwatchService: StopwatchService) {
                         action = if (currentState == StopwatchState.Started) ACTION_SERVICE_STOP
                         elseACTION_SERVICE_START
                     )
-                }, colors = ButtonDefaults) {
-
+                }, colors = ButtonDefaults.buttonColors(
+                    backgroundColor = if (currentState == StopwatchState.Started) Color.Red else Color.Blue,
+                    contentColor = Color.White
+                )
+            ) {
+                Text(
+                    text =  if (currentState == StopwatchService.Started) "Stop"
+                    else if ((currentState == StopwatchService.Stopped)) "Resume"
+                    else "Start"
+                )
+            }
+            Spacer(modifier = Modifier.width(30.dp))
+            Button(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight(0.8f),
+                onClick = {
+                    ServiceHelper.triggerForegroundService(
+                        context = context, action = ACTION_SERVICE_RESET
+                    )
+                },
+                enabled = seconds != "00" && currentState != StopwatchService.Started,
+                colors = ButtonDefaults.buttonColors(disableBackgroundColor = Light)
+            ) {
+            Text(text = "Cancel")
             }
         }
     }
