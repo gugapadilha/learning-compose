@@ -5,20 +5,21 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.compose.animation.ExperimentalAnimationApi
-import com.example.stopwatchapplication.MainActivity
-
-import com.example.stopwatchapplication.service.StopwatchService
-import com.example.stopwatchapplication.util.Constants.CANCEL_REQUEST_CODE
-import com.example.stopwatchapplication.util.Constants.CLICK_REQUEST_CODE
-import com.example.stopwatchapplication.util.Constants.RESUME_REQUEST_CODE
-import com.example.stopwatchapplication.util.Constants.STOPWATCH_STATE
-import com.example.stopwatchapplication.util.Constants.STOP_REQUEST_CODE
+import com.example.stopwatch.MainActivity
+import com.example.stopwatch.util.Constants.CANCEL_REQUEST_CODE
+import com.example.stopwatch.util.Constants.CLICK_REQUEST_CODE
+import com.example.stopwatch.util.Constants.RESUME_REQUEST_CODE
+import com.example.stopwatch.util.Constants.STOPWATCH_STATE
+import com.example.stopwatch.util.Constants.STOP_REQUEST_CODE
 
 @ExperimentalAnimationApi
 object ServiceHelper {
 
     private val flag =
-        PendingIntent.FLAG_IMMUTABLE
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            PendingIntent.FLAG_IMMUTABLE
+        else
+            0
 
     fun clickPendingIntent(context: Context): PendingIntent {
         val clickIntent = Intent(context, MainActivity::class.java).apply {
@@ -56,7 +57,6 @@ object ServiceHelper {
         )
     }
 
-    //Trigger StopwatchService to deal with actions on screen and notifications
     fun triggerForegroundService(context: Context, action: String) {
         Intent(context, StopwatchService::class.java).apply {
             this.action = action

@@ -1,4 +1,4 @@
-package com.example.stopwatchapplication.util
+package com.example.stopwatch.util
 
 object Constants {
     const val ACTION_SERVICE_START = "ACTION_SERVICE_START"
