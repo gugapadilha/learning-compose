@@ -1,5 +1,6 @@
 package com.example.stopwatchapplication.di
 
+import android.app.NotificationManager
 import android.content.Context
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.core.app.NotificationCompat
@@ -26,9 +27,17 @@ object NotificationModule {
             .setContentText("00:00:00")
             .setSmallIcon(R.drawable.baseline_timer_24)
             .setAutoCancel(false)
-            .setOngoing(true)
+            .setOngoing(true) //we cannot dismiss our notification by ourself, cause when we start the timer the notification will automatically show in the not bar
             .addAction(0, "Stop", ServiceHelper.stopPendingIntent(context))
             .addAction(0, "Cancel", ServiceHelper.cancelPendingIntent(context))
             .setContentIntent(ServiceHelper.clickPendingIntent(context))
     }
 }
+
+    @ServiceScoped
+    @Provides
+    fun provideNotificationManager(
+        @ApplicationContext context: Context
+    ): NotificationManager {
+        return context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    }
