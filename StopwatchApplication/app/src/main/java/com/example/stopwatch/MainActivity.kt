@@ -23,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private var isBound by mutableStateOf(false)
+    private var isBound by mutableStateOf(false) //just to see if application is connected or not
     private lateinit var stopwatchService: StopwatchService
     private val connection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
