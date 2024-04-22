@@ -3,6 +3,7 @@ package com.example.testingwithcompose
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.testingwithcompose.TestTags.MESSAGE_BAR
 import com.stevdzasan.messagebar.ContentWithMessageBar
 import com.stevdzasan.messagebar.MessageBarState
 import com.stevdzasan.messagebar.rememberMessageBarState
