@@ -69,6 +69,5 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.6.6")
 
-
     implementation("com.github.stevdza-san:MessageBarCompose:1.0.8")
 }
