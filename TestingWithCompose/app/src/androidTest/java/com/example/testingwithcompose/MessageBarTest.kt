@@ -29,4 +29,14 @@ class MessageBarTest {
         composeTestRule.onNodeWithTag(MESSAGE_BAR).assertDoesNotExist()
     }
 
+    @Test
+    fun addSuccessState_AssertCorrectSuccessMessageIsDisplayed(){
+        composeTestRule.setContent {
+            state = rememberMessageBarState()
+            ContentWithMessageBar(messageBarState = state) {}
+        }
+        state.addSuccess(message = "Success Message!")
+        composeTestRule.onNodeWithTag(MESSAGE_BAR_TEXT)
+    }
+
 }
