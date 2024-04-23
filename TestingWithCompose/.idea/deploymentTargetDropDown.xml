@@ -2,6 +2,9 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="MessageBarTest">
+        <State />
+      </entry>
       <entry key="addNoState_Assert_MessageBarDoesNotExist()">
         <State />
       </entry>
