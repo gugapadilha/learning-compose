@@ -1,9 +1,13 @@
 package com.example.testingwithcompose
 
+import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.assertValueEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.testingwithcompose.TestTags.COPY_BUTTON
 import com.example.testingwithcompose.TestTags.MESSAGE_BAR
+import com.example.testingwithcompose.TestTags.MESSAGE_BAR_TEXT
 import com.stevdzasan.messagebar.ContentWithMessageBar
 import com.stevdzasan.messagebar.MessageBarState
 import com.stevdzasan.messagebar.rememberMessageBarState
@@ -37,6 +41,9 @@ class MessageBarTest {
         }
         state.addSuccess(message = "Success Message!")
         composeTestRule.onNodeWithTag(MESSAGE_BAR_TEXT)
+            .assertTextEquals("Success Message!")
+        composeTestRule.onNodeWithTag(COPY_BUTTON)
+            .assertDoesNotExist()
     }
 
 }

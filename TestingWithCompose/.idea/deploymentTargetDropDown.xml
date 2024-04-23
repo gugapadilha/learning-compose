@@ -8,6 +8,9 @@
       <entry key="addNoState_Assert_MessageBarDoesNotExist()">
         <State />
       </entry>
+      <entry key="addSuccessState_AssertCorrectSuccessMessageIsDisplayed()">
+        <State />
+      </entry>
       <entry key="app">
         <State />
       </entry>
