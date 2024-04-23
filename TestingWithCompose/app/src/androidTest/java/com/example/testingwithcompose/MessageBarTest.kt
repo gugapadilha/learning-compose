@@ -14,6 +14,7 @@ import com.stevdzasan.messagebar.rememberMessageBarState
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.lang.Exception
 
 @RunWith(AndroidJUnit4::class)
 class MessageBarTest {
@@ -44,6 +45,19 @@ class MessageBarTest {
             .assertTextEquals("Success Message!")
         composeTestRule.onNodeWithTag(COPY_BUTTON)
             .assertDoesNotExist()
+    }
+
+    @Test
+    fun addErrorState_Assert_CorrectMessageErrorIsDisplayed(){
+        composeTestRule.setContent {
+            state = rememberMessageBarState()
+            ContentWithMessageBar(messageBarState = state) {}
+        }
+        state.addError(exception = Exception("Fatal Error!"))
+        composeTestRule.onNodeWithTag(MESSAGE_BAR_TEXT)
+            .assertTextEquals("Fatal Error!")
+        composeTestRule.onNodeWithTag(COPY_BUTTON)
+            .assertExists()
     }
 
 }
