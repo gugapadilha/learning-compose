@@ -59,7 +59,7 @@ fun MainScreen() {
             composition = composition,
             progress = { progress })
         Button(onClick = { isPlaying = true}) {
-            Text(text = "Play Again")
+            Text(text = "Restart Animation")
         }
 
     }
