@@ -34,7 +34,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 
 @Composable
 fun MainScreen() {
-    val composition = rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.android))
+    val composition = rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.tiesto))
     val progress by animateLottieCompositionAsState(composition = composition.value, iterations = LottieConstants.IterateForever)
 
     val infiniteTransition = rememberInfiniteTransition()
