@@ -11,11 +11,14 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -38,28 +41,32 @@ fun MainScreen() {
     }
 
     val pagerState = rememberPagerState(pageCount = { images.size })
+    val matrix = remember { ColorMatrix() } //remember recomposition color image
 
     Scaffold(
         modifier = Modifier.padding(vertical = 48.dp)
     ) {
         HorizontalPager(state = pagerState) { index ->
             val pageOffset = (pagerState.currentPage - index) + pagerState.currentPageOffsetFraction
-            val imageSize by animateFloatAsState(
-                targetValue = if(pageOffset != 0.0f) 0.75f else 1f,
-                animationSpec = tween(durationMillis = 300), label = ""
-            )
+
+            val saturation = if (pageOffset != 0f) 0f else 1f
+
+            val matrix = ColorMatrix().apply {
+                setToSaturation(saturation)
+            }
             AsyncImage(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp)
                     .clip(RoundedCornerShape(16.dp))
                     .graphicsLayer {
-                                   scaleX = imageSize
-                                    scaleY = imageSize
+                        scaleX = if (pageOffset != 0f) 0.75f else 1f
+                        scaleY = if (pageOffset != 0f) 0.75f else 1f
                     },
                 model = ImageRequest.Builder(LocalContext.current).data(images[index]).build(),
                 contentDescription = "Image",
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
+                colorFilter = ColorFilter.colorMatrix(matrix)
             )
         }
     }
