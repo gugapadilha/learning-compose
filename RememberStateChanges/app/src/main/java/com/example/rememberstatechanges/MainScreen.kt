@@ -12,6 +12,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.SaverScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -21,9 +24,10 @@ data class Person(
     val age: Int
 )
 
+//It possible save the state of screen using a view model or a savable state saver.
 @Composable
 fun MainScreen() {
-    var person by remember {
+    var person by rememberSaveable(stateSaver = PersonSaver) {
         mutableStateOf(Person("Guga", 22))
     }
 
@@ -40,4 +44,20 @@ fun MainScreen() {
             Text(text = "Update")
         }
     }
+}
+
+object PersonSaver : Saver<Person, Map<String, Any>> {
+    override fun restore(value: Map<String, Any>): Person {
+        val name = value["name"] as String
+        val age = value["age"] as Int
+        return Person(name, age)
+    }
+
+    override fun SaverScope.save(value: Person): Map<String, Any> {
+        return mapOf(
+            "name" to value.name,
+            "age" to value.age
+        )
+    }
+
 }
