@@ -40,7 +40,7 @@ fun MainScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.surface),
+            .background(Color.Black),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -51,7 +51,7 @@ fun MainScreen() {
             shape = RoundedCornerShape(8.dp),
             borderWidth = 1.dp,
             gradient = Brush.linearGradient(listOf(Color.Magenta, Color.Cyan)),
-            onCardClick = {}
+            onCardClick = {},
         ) {
             Column(
                 modifier = Modifier.padding(all = 24.dp)
@@ -59,10 +59,12 @@ fun MainScreen() {
                 Text(
                     fontSize = MaterialTheme.typography.displaySmall.fontSize,
                     fontWeight = FontWeight.Bold,
+                    color = Color.White,
                     text = "Welcome"
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
+                    color = Color.White,
                     fontSize = MaterialTheme.typography.bodyMedium.fontSize,
                     text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
                 )
@@ -82,7 +84,8 @@ fun AnimatedBorderCard(
     gradient: Brush = Brush.sweepGradient(listOf(Color.Gray, Color.White)),
     animationDuration: Int = 10000,
     onCardClick: () -> Unit = {},
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
+
 ) {
     val infiniteTransition = rememberInfiniteTransition(label = "Infinite Color Animation")
     val degrees by infiniteTransition.animateFloat(
@@ -115,7 +118,7 @@ fun AnimatedBorderCard(
                     }
                     drawContent()
                 },
-            color = MaterialTheme.colorScheme.surface,
+            color = Color.Black,
             shape = shape
         ) {
             content()
