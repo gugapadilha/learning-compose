@@ -10,8 +10,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -50,24 +52,30 @@ fun MainScreen() {
             borderWidth = 1.dp,
             gradient = Brush.linearGradient(listOf(Color.Magenta, Color.Cyan)),
             onCardClick = {}
-        ){
+        ) {
             Column(
-                modifier = Modifier.padding(all = 24.dp)){
+                modifier = Modifier.padding(all = 24.dp)
+            ) {
                 Text(
                     fontSize = MaterialTheme.typography.displaySmall.fontSize,
                     fontWeight = FontWeight.Bold,
                     text = "Welcome"
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    fontSize = MaterialTheme.typography.bodyMedium.fontSize,
+                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
                 )
             }
 
         }
 
     }
-    
+
 }
 
 @Composable
-    fun AnimatedBorderCard(
+fun AnimatedBorderCard(
     modifier: Modifier = Modifier,
     shape: Shape = RoundedCornerShape(size = 0.dp),
     borderWidth: Dp = 2.dp,
@@ -75,43 +83,43 @@ fun MainScreen() {
     animationDuration: Int = 10000,
     onCardClick: () -> Unit = {},
     content: @Composable () -> Unit
-    ) {
-        val infiniteTransition = rememberInfiniteTransition(label = "Infinite Color Animation")
-        val degrees by infiniteTransition.animateFloat(
-            initialValue = 0f,
-            targetValue = 360f,
-            animationSpec = infiniteRepeatable(
-                animation = tween(durationMillis = animationDuration, easing = LinearEasing),
-                repeatMode = RepeatMode.Restart
-            ),
-            label = "Infinite Colors"
-        )
+) {
+    val infiniteTransition = rememberInfiniteTransition(label = "Infinite Color Animation")
+    val degrees by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = animationDuration, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "Infinite Colors"
+    )
 
+    Surface(
+        modifier = modifier
+            .clip(shape)
+            .clickable { onCardClick() },
+        shape = shape
+    ) {
         Surface(
-            modifier = modifier
-                .clip(shape)
-                .clickable { onCardClick() },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(borderWidth)
+                .drawWithContent {
+                    rotate(degrees = degrees) {
+                        drawCircle(
+                            brush = gradient,
+                            radius = size.width,
+                            blendMode = BlendMode.SrcIn,
+                        )
+                    }
+                    drawContent()
+                },
+            color = MaterialTheme.colorScheme.surface,
             shape = shape
         ) {
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(borderWidth)
-                    .drawWithContent {
-                        rotate(degrees = degrees) {
-                            drawCircle(
-                                brush = gradient,
-                                radius = size.width,
-                                blendMode = BlendMode.SrcIn,
-                            )
-                        }
-                        drawContent()
-                    },
-                color = MaterialTheme.colorScheme.surface,
-                shape = shape
-            ) {
-                content()
-            }
+            content()
         }
     }
+}
 
