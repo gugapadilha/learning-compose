@@ -148,7 +148,6 @@ fun ListScreen() {
             }
         }
     }
-
 }
 
 fun Modifier.clickableWithoutRipple(
